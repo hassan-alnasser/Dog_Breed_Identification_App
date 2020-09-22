@@ -122,11 +122,10 @@ This will start the web app and will direct you to a URL where you can enter mes
 
 As we will notice, the model need more enhancements on its accuracy. This will require improving the algorithm to give better results at a larger scale or in a production environment. The following should be considered:
 
-##### 1. Points of improvements for the algorithm:
-##### 2. More variety of breeds is required to enhance the model prediction for humans
-##### 3. Improve the model to be able to classify pictures with noise
-##### 4. Increasing number of epoch might help as well
-##### 5. More images as per classes of dog, will help to improve model's accuracy
+##### 1. More variety of breeds is required to enhance the model prediction for humans
+##### 2. Improve the model to be able to classify pictures with noise
+##### 3. Increasing number of epoch might help as well
+##### 4. More images as per classes of dog, will help to improve model's accuracy
 
 <a id='files'></a>
 
