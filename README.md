@@ -33,39 +33,29 @@ Welcome to the Convolutional Neural Networks (CNN) project in the Data Scientist
 
 ## 2. Project Components
 
-There are three components of this project:
+There are two components of this project:
 
 <a id='etl_pipeline'></a>
 
-### 2.1. ETL Pipeline
+### 2.1. dog_app.ipynb Notebook
 
-File _data/process_data.py_ contains data cleaning pipeline that:
-
-- Loads the `messages` and `categories` dataset
-- Merges the two datasets
-- Cleans the data
-- Stores it in a **SQLite database**
-
-<a id='ml_pipeline'></a>
-
-### 2.2. ML Pipeline
-
-File _models/train_classifier.py_ contains machine learning pipeline that:
-
-- Loads data from the **SQLite database**
-- Splits the data into training and testing sets
-- Builds a text processing and machine learning pipeline
-- Trains and tunes a model using GridSearchCV
-- Outputs result on the test set
-- Exports the final model as a pickle file
+In this notebook we will do the following:
+- Import Datasets
+- Detect Humans
+- Detect Dogs
+- Create a CNN to Classify Dog Breeds (from Scratch)
+- Use a CNN to Classify Dog Breeds (using Transfer Learning)
+- Create a CNN to Classify Dog Breeds (using Transfer Learning)
+- Write your Algorithm
+- Test Your Algorithm
 
 <a id='flask'></a>
 
-### 2.3. Flask Web App
+### 2.2. Flask Web App
 
 <a id='eg'></a>
 
-Running [this command](#com) **from app directory** will start the web app where users can enter their query, i.e., a request message sent during a natural disaster.
+Running [this command](#com) **from web directory** will start the web app where users can enter their query, i.e., a request message sent during a natural disaster.
 
 **_Screenshot 1_**
 
