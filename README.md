@@ -1,6 +1,6 @@
 # Data Scientist Nanodegree
 
-## Dog_Breed_Identification_App
+## Dog Breed Identification App
 ### Dog Breed Classifier
    
 ## Table of Contents
