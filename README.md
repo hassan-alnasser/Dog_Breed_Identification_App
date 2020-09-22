@@ -6,9 +6,8 @@
 ## Table of Contents
 
 - [Project Overview](#overview)
-- [Project Components](#components)
-  - [ETL Pipeline](#etl_pipeline)
-  - [ML Pipeline](#ml_pipeline)
+- [Project Components](#components)  
+  - [ML Pipeline](#notebook)
   - [Flask Web App](#flask)
 - [Running](#run)
   - [Data Cleaning](#cleaning)
@@ -35,9 +34,9 @@ Welcome to the Convolutional Neural Networks (CNN) project in the Data Scientist
 
 There are two components of this project:
 
-<a id='etl_pipeline'></a>
+<a id='notebook'></a>
 
-### 2.1. dog_app.ipynb Notebook
+### 2.1. Dog_app.ipynb Notebook
 
 In this notebook we will do the following:
 - Import Datasets
@@ -46,8 +45,8 @@ In this notebook we will do the following:
 - Create a CNN to Classify Dog Breeds (from Scratch)
 - Use a CNN to Classify Dog Breeds (using Transfer Learning)
 - Create a CNN to Classify Dog Breeds (using Transfer Learning)
-- Write your Algorithm
-- Test Your Algorithm
+- Write our Algorithm
+- Test our Algorithm
 
 <a id='flask'></a>
 
