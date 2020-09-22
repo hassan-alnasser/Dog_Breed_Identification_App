@@ -92,21 +92,22 @@ As we will notice, the model need more enhancements on its accuracy. This will r
 
 <pre>
 .
-├── bottleneck_features
-├── data
-├── data
-│   ├── run.py------------------------# FLASK FILE THAT RUNS APP│   
+├── bottleneck_features------------------------# TO STORE BOTTLENECK_FEATURES FILES
+├── data---------------------------------------# TO STORE HUMAN AND DOG DATASETS
+├── haarcascades
+│   └── haarcascade_frontalface_alt.xml--------# USED FOR FACE DETECTION   
+├── images-------------------------------------# PLOTS FOR USE IN README AND THE WEB APP
+├── saved_models-------------------------------# LIST OF SAVED MODELS FROM APP
+├── web
+│   ├── model----------------------------------# WEB APP Model
+│   ├── app.py---------------------------------# STARTUP WEB APP
+│   ├── web.py---------------------------------# MAIN WEB APP
 │   └── templates
-│       ├── go.html-------------------# CLASSIFICATION RESULT PAGE OF WEB APP
-│       └── master.html---------------# MAIN PAGE OF WEB APP
-│   ├── DisasterResponse.db-----------# DATABASE TO SAVE CLEANED DATA TO
-│   ├── disaster_categories.csv-------# DATA TO PROCESS
-│   ├── disaster_messages.csv---------# DATA TO PROCESS
-│   └── process_data.py---------------# PERFORMS ETL PROCESS
-├── img-------------------------------# PLOTS FOR USE IN README AND THE WEB APP
-├── models
-│   └── train_classifier.py-----------# PERFORMS CLASSIFICATION TASK
-
+│       ├── master.html------------------------# WEB APP HOME PAGE
+│       └── predict.html-----------------------# WEB APP ACTION PAGE
+├── dog_app.ipynb------------------------------# DOG BREED PYTHON APP
+├── extract_bottleneck_features.py-------------# BOTTLENECK FEATURES SCRIPT
+└── requirements.txt---------------------------# REQUIREMENTS FOR APP
 </pre>
 
 <a id='sw'></a>
