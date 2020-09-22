@@ -165,4 +165,3 @@ pip3 install -r requirements.txt
 
 Must give credit to [Udacity](https://www.udacity.com/courses/all) for creating this beautiful learning experience.  
 Also, credit to [pythonanywhere] (https://www.pythonanywhere.com) for hosting my web app for free!
-Find the Licensing for the data and other descriptive information from [Figure-eight](https://www.figure-eight.com/dataset/combined-disaster-response-data/).
