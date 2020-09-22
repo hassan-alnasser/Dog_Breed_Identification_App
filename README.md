@@ -164,5 +164,6 @@ pip3 install -r requirements.txt
 ## 7. Credits and Acknowledgements <a name='licensing'></a>
 
 Must give credit to [Udacity](https://www.udacity.com/courses/all) for creating this beautiful learning experience.  
-Also, credit to [pythonanywhere] (https://www.pythonanywhere.com) for hosting my web app for free!
-This project is licensed under the [MIT License](https://github.com/jeferson-sb/dogAI/blob/master/LICENSE)
+Also, credit to [pythonanywhere](https://www.pythonanywhere.com) for hosting my web app for free.
+
+This project is licensed under the [MIT License](https://github.com/jeferson-sb/dogAI/blob/master/LICENSE).
