@@ -25,15 +25,15 @@
 
 ## 1. Project Overview
 
-In this project, I'll apply a data science approach to analyze disaster data from <a href="https://www.figure-eight.com/" target="_blank">Figure Eight</a> to build a model for an API that classifies disaster messages.
+In this project, I'll apply a data science approach to analyze humans and dogs data and build a prediction model to classify images of dogs according to their breed
 
-_data_ directory contains a data set which are real messages that were sent during disaster events. I will be creating a machine learning pipeline to categorize these events so that appropriate disaster relief agency can be reached out for help.
+_data_ directory will contains human and dogs datasets. I will be creating a machine learning algorithm to detect human and dog and then predict their breed.
 
-This project will include a web app where an emergency worker can input a new message and get classification results in several categories. The web app will also display visualizations of the data.
+This project will include a web app where you could upload images and get classification results according to their breed. The web app will also display pictures of the provided images.
 
 [Here](#eg) are a few screenshots of the web app.
 
-<a id='components'></a>
+<a id='main'></a>
 
 ## 2. Project Components
 
