@@ -163,8 +163,7 @@ As we will notice, the model need more enhancements on its accuracy. This will r
 
 ## 6. Software Requirements
 
-This project uses **Python 3.6.3** and the necessary libraries are mentioned in _requirements.txt_.
-The standard libraries which are not mentioned in _requirements.txt_ are _json_, _operator_, _pickle_, _pprint_, _re_, and _sys_.
+This project uses **Python 3.7** and the necessary libraries are mentioned in _requirements.txt_.
 
 <a id='credits'></a>
 
