@@ -6,7 +6,7 @@
 ## Table of Contents
 
 - [Project Overview](#overview)
-- [Dog_app.ipynb](#notebook)
+- [Project Process](#notebook)
 - [Web App](#run)
 - [Conclusion](#conclusion)
 - [Files](#files)
@@ -27,7 +27,7 @@ Welcome to the Convolutional Neural Networks (CNN) project in the Data Scientist
 
 <a id='notebook'></a>
 
-### 2. Dog_app.ipynb Notebook
+### 2. Project Process
 
 You will need to download the following:
 
