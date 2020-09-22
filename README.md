@@ -27,7 +27,13 @@ Welcome to the Convolutional Neural Networks (CNN) project in the Data Scientist
 
 ### 2. Dog_app.ipynb Notebook
 
-In this notebook we will do the following:
+You will need to download the following:
+
+1. Download the [dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip).  Unzip the folder and place it in the data folder 
+2. Download the [human dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/lfw.zip).  Unzip the folder and place it in the the data folder
+3. Donwload the [Xception bottleneck features](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogXceptionData.npz) for the dog dataset.  Place it in the bottleneck_features folder.
+
+Then, we will do the following:
 - Import Datasets
 - Detect Humans
 - Detect Dogs
