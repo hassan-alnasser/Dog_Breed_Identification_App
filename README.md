@@ -122,7 +122,7 @@ Now that we have cleaned the data and trained our model. Now it's time to see th
 <a id='com'></a>
 
 ```bat
-python run.py
+python app.py
 ```
 
 This will start the web app and will direct you to a URL where you can enter messages and get classification results for it.
@@ -164,6 +164,10 @@ As we will notice, the model need more enhancements on its accuracy. This will r
 ## 6. Software Requirements
 
 This project uses **Python 3.7** and the necessary libraries are mentioned in _requirements.txt_.
+
+```bat
+pip3 install -r requirements.txt
+```
 
 <a id='credits'></a>
 
