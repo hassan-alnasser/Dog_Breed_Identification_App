@@ -25,11 +25,7 @@
 
 ## 1. Project Overview
 
-In this project, I'll apply a data science approach to analyze humans and dogs data and build a prediction model to classify images of dogs according to their breed
-
-_data_ directory will contains human and dogs datasets. I will be creating a machine learning algorithm to detect human and dog and then predict their breed.
-
-This project will include a web app where you could upload images and get classification results according to their breed. The web app will also display pictures of the provided images.
+Welcome to the Convolutional Neural Networks (CNN) project in the Data Scientist Nanodegree! In this project, you will learn how to build a pipeline that can be used within a web or mobile app to process real-world, user-supplied images. Given an image of a dog, our algorithm will identify the dog breed. If supplied an image of a human, the code will identify the resembling dog breed.
 
 [Here](#eg) are a few screenshots of the web app.
 
