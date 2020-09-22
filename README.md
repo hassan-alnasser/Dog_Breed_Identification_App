@@ -92,12 +92,13 @@ As we will notice, the model need more enhancements on its accuracy. This will r
 
 <pre>
 .
-├── app
+├── bottleneck_features
+├── data
+├── data
 │   ├── run.py------------------------# FLASK FILE THAT RUNS APP│   
 │   └── templates
 │       ├── go.html-------------------# CLASSIFICATION RESULT PAGE OF WEB APP
 │       └── master.html---------------# MAIN PAGE OF WEB APP
-├── data
 │   ├── DisasterResponse.db-----------# DATABASE TO SAVE CLEANED DATA TO
 │   ├── disaster_categories.csv-------# DATA TO PROCESS
 │   ├── disaster_messages.csv---------# DATA TO PROCESS
