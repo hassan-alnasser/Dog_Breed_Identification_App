@@ -60,7 +60,7 @@ You will need to download the following:
 
 Then we will use a systematic process workflow to make the project manageable, and this approach involved the following steps:
 
-- ##### Import Datasets:
+- #### Import Datasets:
 
 In the code cell below, we import a dataset of dog images. We populate a few variables through the use of the load_files function from the scikit-learn library:
 
