@@ -252,8 +252,8 @@ The function above returns a value between 151 and 268 (inclusive) because the c
 
 **Answer**:
 
-    Percentage of dog faces detection as dogs: 100%.
-    Percentage of human faces detection as dogs: 1%
+    Percentage of human faces detection as dogs: 1%.
+    Percentage of dog faces detection as dogs: 100%
 
 
 Having defined and tested functions for detecting humans and dogs in images, the next step is to create a CNN that classifies dog breeds. The goal is to create a CNN architecture that achieves at least 1% accuracy from scratch without the use of transfer learning.
