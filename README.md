@@ -258,7 +258,64 @@ The function above returns a value between 151 and 268 (inclusive) because the c
 
 Having defined and tested functions for detecting humans and dogs in images, the next step is to create a CNN that classifies dog breeds. The goal is to create a CNN architecture that achieves at least 1% accuracy from scratch without the use of transfer learning.
 
-- Create a CNN to Classify Dog Breeds (from Scratch)
+#### Create a CNN to Classify Dog Breeds (from Scratch)
+
+Now that we have functions for detecting humans and dogs in images, we need a way to predict breed from images.  In this step, you will create a CNN that classifies dog breeds.  You must create your CNN _from scratch_ (so, you can't use transfer learning _yet_!), and you must attain a test accuracy of at least 1%.  In Step 5 of this notebook, you will have the opportunity to use transfer learning to create a CNN that attains greatly improved accuracy.
+
+Be careful with adding too many trainable layers!  More parameters means longer training, which means you are more likely to need a GPU to accelerate the training process.  Thankfully, Keras provides a handy estimate of the time that each epoch is likely to take; you can extrapolate this estimate to figure out how long it will take for your algorithm to train.
+
+We mention that the task of assigning breed to dogs from images is considered exceptionally challenging.  To see why, consider that *even a human* would have great difficulty in distinguishing between a Brittany and a Welsh Springer Spaniel.  
+
+Brittany | Welsh Springer Spaniel
+- | -
+<img src="images/Brittany_02625.jpg" width="100"> | <img src="images/Welsh_springer_spaniel_08203.jpg" width="200">
+
+It is not difficult to find other dog breed pairs with minimal inter-class variation (for instance, Curly-Coated Retrievers and American Water Spaniels).  
+
+Curly-Coated Retriever | American Water Spaniel
+- | -
+<img src="images/Curly-coated_retriever_03896.jpg" width="200"> | <img src="images/American_water_spaniel_00648.jpg" width="200">
+
+
+Likewise, recall that labradors come in yellow, chocolate, and black.  Your vision-based algorithm will have to conquer this high intra-class variation to determine how to classify all of these different shades as the same breed.  
+
+Yellow Labrador | Chocolate Labrador | Black Labrador
+- | -
+<img src="images/Labrador_retriever_06457.jpg" width="150"> | <img src="images/Labrador_retriever_06455.jpg" width="240"> | <img src="images/Labrador_retriever_06449.jpg" width="220">
+
+We also mention that random chance presents an exceptionally low bar: setting aside the fact that the classes are slightly imabalanced, a random guess will provide a correct answer roughly 1 in 133 times, which corresponds to an accuracy of less than 1%.  
+
+Remember that the practice is far ahead of the theory in deep learning.  Experiment with many different architectures, and trust your intuition.  And, of course, have fun!
+
+#### Pre-process the Data
+
+We rescale the images by dividing every pixel in every image by 255.
+
+```python
+from PIL import ImageFile                            
+ImageFile.LOAD_TRUNCATED_IMAGES = True                 
+
+# pre-process the data for Keras
+train_tensors = paths_to_tensor(train_files).astype('float32')/255
+valid_tensors = paths_to_tensor(valid_files).astype('float32')/255
+test_tensors = paths_to_tensor(test_files).astype('float32')/255
+```
+
+      100%|██████████| 6680/6680 [00:47<00:00, 141.80it/s]
+      100%|██████████| 835/835 [00:05<00:00, 154.25it/s]
+      100%|██████████| 836/836 [00:05<00:00, 156.05it/s]
+
+
+#### Model Architecture
+
+Create a CNN to classify dog breed.  At the end of your code cell block, summarize the layers of your model by executing the line:
+
+        model.summary()
+
+We have imported some Python modules to get you started, but feel free to import as many modules as you need.  If you end up getting stuck, here's a hint that specifies a model that trains relatively fast on CPU and attains >1% test accuracy in 5 epochs:
+
+![Sample CNN](images/sample_cnn.png)
+
 - Use a CNN to Classify Dog Breeds (using Transfer Learning)
 - Create a CNN to Classify Dog Breeds (using Transfer Learning)
 - Write our Algorithm
