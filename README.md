@@ -168,7 +168,7 @@ Before using any of the face detectors, it is standard procedure to convert the 
 
 In the above code, faces is a numpy array of detected faces, where each row corresponds to a detected face. Each detected face is a 1D array with four entries that specifies the bounding box of the detected face. The first two entries in the array (x and y) specify the horizontal and vertical positions of the top left corner of the bounding box. The last two entries in the array (w and h) specify the width and height of the box.
 
-##### Write a Human Face Detector:
+**Write a Human Face Detector**:
 We can use this procedure to write a function that returns True if a human face is detected in an image and False otherwise. This function, aptly named face_detector, takes a string-valued file path to an image as input and appears in the code block below.
 
 ```python
@@ -180,7 +180,7 @@ def face_detector(img_path):
     return len(faces) > 0
 ```    
 
-##### Assess the Human Face Detector:
+**Assess the Human Face Detector**:
 - **Question 1**: 
 Use the code cell below to test the performance of the face_detector function.
 What percentage of the first 100 images in human_files have a detected human face? 
