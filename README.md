@@ -575,7 +575,17 @@ def execute_app(img_path):
     
     else:
         return print("Neither humans nor dogs are in the image. Please try again.")
-```       
+```    
+
+**Why does the Xception Network do the best?**
+
+The VGG-19 network consists of 19 traditional simple convolutional layers which are trained to learn image features. Hence, the result of training using this network results in a fairly good accuracy of around ~40%.
+
+The ResNet, Inception and Xception architectures, however, use architectures (skip layers in the case of ResNet and Inception modules in the case of Inception and Xception) to enable training much deeper networks without over-fitting.
+
+The Xception Network in particular uses an extreme Inception module architecure, which consists of 1x1 convolution filters, followed by multiple 3x3 or 5x5 filters, thus decoupling the mapping of cross-channels correlations and spatial correlations in the feature maps of convolutional neural networks [1]
+
+References[1]: *Xception: Deep Learning with Depthwise Separable Convolutions*
 
 #### Test your Algorithm:
 
