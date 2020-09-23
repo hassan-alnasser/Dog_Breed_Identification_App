@@ -385,20 +385,22 @@ _________________________________________________________________
 ```
 
 **Test the Model**:
-Now, we can use the CNN to test how well it identifies breed within our test dataset of dog images.  We print the test accuracy below.
+Try out your model on the test dataset of dog images.  Ensure that your test accuracy is greater than 1%.
 
 ```python
 # get index of predicted dog breed for each image in test set
-VGG16_predictions = [np.argmax(VGG16_model.predict(np.expand_dims(feature, axis=0))) for feature in test_VGG16]
+dog_breed_predictions = [np.argmax(model.predict(np.expand_dims(tensor, axis=0))) for tensor in test_tensors]
 
 # report test accuracy
-test_accuracy = 100*np.sum(np.array(VGG16_predictions)==np.argmax(test_targets, axis=1))/len(VGG16_predictions)
+test_accuracy = 100*np.sum(np.array(dog_breed_predictions)==np.argmax(test_targets, axis=1))/len(dog_breed_predictions)
 print('Test accuracy: %.4f%%' % test_accuracy)
 ```
 
-      Test accuracy: 41.7464%
+      Test accuracy: 6.9378%
 
 - Use a CNN to Classify Dog Breeds (using Transfer Learning)
+
+
 - Create a CNN to Classify Dog Breeds (using Transfer Learning)
 - Write our Algorithm
 - Test our Algorithm
