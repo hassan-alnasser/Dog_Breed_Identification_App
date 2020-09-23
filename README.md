@@ -181,13 +181,13 @@ def face_detector(img_path):
 ```    
 
 ##### Assess the Human Face Detector:
-- Question 1: 
+- **Question 1: 
 Use the code cell below to test the performance of the face_detector function.
 What percentage of the first 100 images in human_files have a detected human face? 
 What percentage of the first 100 images in dog_files have a detected human face? 
 Ideally, we would like 100% of human images with a detected face and 0% of dog images with a detected face. You will see that our algorithm falls short of this goal, but still gives acceptable performance. We extract the file paths for the first 100 images from each of the datasets and store them in the numpy arrays human_files_short and dog_files_short.
 
-- Answer:
+- **Answer:
 Percentage of human faces detection as human: 99%
 Percentage of dog faces detection as human: 12%
 
@@ -214,10 +214,10 @@ print('Percentage of dog faces detection as human: {}%'.format(dog_detects_count
       Percentage of human faces detection as human: 99%
       Percentage of dog faces detection as human: 12%
 
-- Question 2: 
+- **Question 2: 
 This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?
 
-- Answer:
+- **Answer:
 I think users have their reasons to expect great results from this face detection algorithm. However, they need to understand that algorithms are not perfect and have their own flaws. Custom algorithms can be implemented to handle this scenario, but it will definitely take much time and effort to produce promising results. The beauty of using OpenCV library is you can get more 90% accuracy with less effort.
 
 - Detect Dogs
