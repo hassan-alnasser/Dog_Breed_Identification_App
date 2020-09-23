@@ -396,7 +396,7 @@ test_accuracy = 100*np.sum(np.array(dog_breed_predictions)==np.argmax(test_targe
 print('Test accuracy: %.4f%%' % test_accuracy)
 ```
 
-      Test accuracy: 6.9378%
+      Test accuracy: 10.1675%
 
 #### Use a CNN to Classify Dog Breeds:
 
