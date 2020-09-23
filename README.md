@@ -316,6 +316,74 @@ We have imported some Python modules to get you started, but feel free to import
 
 ![Sample CNN](images/sample_cnn.png)
 
+**Question 4**: Outline the steps you took to get to your final CNN architecture and your reasoning at each step. If you chose to use the hinted architecture above, describe why you think that CNN architecture should work well for the image classification task.
+
+**Answer**: I have defined three filters layer with structure as 16, 32, 64 and with max-pooling layer to reduce the dimensionality from the data. I have used two dropouts and dense layers to optimize CNN and reduce the changes to overfitting. However, I think more work is needed to achieve the best performance. For this, argumented the dataset to add more training data.
+
+```python
+from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
+from keras.layers import Dropout, Flatten, Dense
+from keras.models import Sequential
+
+# create the architecture using Sequential()
+model = Sequential()
+
+# convolution layer has 16 filters of size 2
+model.add(Conv2D(filters=16, kernel_size=2, padding='same', activation='relu', input_shape=(224, 224, 3)))
+# pooling layer with a 2 x 2 pixel filter 
+model.add(MaxPooling2D(pool_size=2))
+
+# convolution layer has 32 filters of size 2
+model.add(Conv2D(filters=32, kernel_size=2, padding='same', activation='relu'))
+# pooling layer with a 2 x 2 pixel filter 
+model.add(MaxPooling2D(pool_size=2))
+
+# convolution layer has 64 filters of size 2
+model.add(Conv2D(filters=64, kernel_size=2, padding='same', activation='relu'))
+# pooling layer with a 2 x 2 pixel filter 
+model.add(MaxPooling2D(pool_size=2))
+
+model.add(Dropout(0.5))
+model.add(Flatten())
+model.add(Dense(500, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(133, activation='softmax'))
+
+model.summary()
+```
+
+```python
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 224, 224, 16)      208       
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 112, 112, 16)      0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 112, 112, 32)      2080      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 56, 56, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 56, 56, 64)        8256      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 28, 28, 64)        0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 28, 28, 64)        0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 50176)             0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 500)               25088500  
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 500)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 133)               66633     
+=================================================================
+Total params: 25,165,677
+Trainable params: 25,165,677
+Non-trainable params: 0
+_________________________________________________________________
+```
+
 - Use a CNN to Classify Dog Breeds (using Transfer Learning)
 - Create a CNN to Classify Dog Breeds (using Transfer Learning)
 - Write our Algorithm
