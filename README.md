@@ -398,8 +398,55 @@ print('Test accuracy: %.4f%%' % test_accuracy)
 
       Test accuracy: 6.9378%
 
-- Use a CNN to Classify Dog Breeds (using Transfer Learning)
+#### Use a CNN to Classify Dog Breeds:
 
+To reduce training time without sacrificing accuracy, we show you how to train a CNN using transfer learning.  In the following step, you will get a chance to use transfer learning to train your own CNN.
+
+**Obtain Bottleneck Features**
+
+```python
+bottleneck_features = np.load('bottleneck_features/DogVGG16Data.npz')
+train_VGG16 = bottleneck_features['train']
+valid_VGG16 = bottleneck_features['valid']
+test_VGG16 = bottleneck_features['test']
+```
+
+**Model Architecture**:
+
+The model uses the the pre-trained VGG-16 model as a fixed feature extractor, where the last convolutional output of VGG-16 is fed as input to our model.  We only add a global average pooling layer and a fully connected layer, where the latter contains one node for each dog category and is equipped with a softmax.
+
+```python
+VGG16_model = Sequential()
+VGG16_model.add(GlobalAveragePooling2D(input_shape=train_VGG16.shape[1:]))
+VGG16_model.add(Dense(133, activation='softmax'))
+
+VGG16_model.summary()
+```
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    global_average_pooling2d_2 ( (None, 512)               0         
+    _________________________________________________________________
+    dense_2 (Dense)              (None, 133)               68229     
+    =================================================================
+    Total params: 68,229
+    Trainable params: 68,229
+    Non-trainable params: 0
+    _________________________________________________________________
+
+**Test the Model**:
+
+```python
+# get index of predicted dog breed for each image in test set
+VGG16_predictions = [np.argmax(VGG16_model.predict(np.expand_dims(feature, axis=0))) for feature in test_VGG16]
+
+# report test accuracy
+test_accuracy = 100*np.sum(np.array(VGG16_predictions)==np.argmax(test_targets, axis=1))/len(VGG16_predictions)
+print('Test accuracy: %.4f%%' % test_accuracy)
+```
+      Test accuracy: 41.7464%
+      
+Now, we can use the CNN to test how well it identifies breed within our test dataset of dog images.  We print the test accuracy below.
 
 - Create a CNN to Classify Dog Breeds (using Transfer Learning)
 - Write our Algorithm
