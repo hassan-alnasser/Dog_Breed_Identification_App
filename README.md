@@ -60,7 +60,7 @@ You will need to download the following:
 
 Then we will use a systematic process workflow to make the project manageable, and this approach involved the following steps:
 
-- Import Datasets
+- Import Datasets:
 In the code cell below, we import a dataset of dog images. We populate a few variables through the use of the load_files function from the scikit-learn library:
 
     train_files, valid_files, test_files - numpy arrays containing file paths to images
@@ -108,7 +108,7 @@ print('There are %d test dog images.'% len(test_files))
     There are 835 validation dog images.
     There are 836 test dog images.
 
-- Detect Humans
+- Detect Humans:
 - Detect Dogs
 - Create a CNN to Classify Dog Breeds (from Scratch)
 - Use a CNN to Classify Dog Breeds (using Transfer Learning)
