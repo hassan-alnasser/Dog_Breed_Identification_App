@@ -245,7 +245,7 @@ The function above returns a value between 151 and 268 (inclusive) because the c
 
 **Assess the Dog Detector**:
 
-**Question 3*: Use the code cell below to test the performance of your dog_detector function.
+**Question 3**: Use the code cell below to test the performance of your dog_detector function.
 
     What percentage of the images in human_files_short have a detected dog?
     What percentage of the images in dog_files_short have a detected dog?
