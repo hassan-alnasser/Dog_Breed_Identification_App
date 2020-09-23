@@ -129,8 +129,40 @@ print('There are %d total human images.' % len(human_files))
 OpenCV’s implementation of Haar feature-based cascade classifiers was used detect human faces in images, and this was done by first converting the image into grey-scale, and then passing the grey-scale image as a parameter to the detectMultiScale function. This function executes the classifier stored in face_detector custom function that makes use of the OpenCV CascadeClassifier.
 
 ```python
+import cv2                
+import matplotlib.pyplot as plt                        
+%matplotlib inline                               
 
+# extract pre-trained face detector
+face_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_alt.xml')
+
+# load color (BGR) image
+img = cv2.imread(human_files[3])
+# convert BGR image to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# find faces in image
+faces = face_cascade.detectMultiScale(gray)
+
+# print number of faces detected in the image
+print('Number of faces detected:', len(faces))
+
+# get bounding box for each detected face
+for (x,y,w,h) in faces:
+    # add bounding box to color image
+    cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+    
+# convert BGR image to RGB for plotting
+cv_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+# display the image, along with bounding box
+plt.imshow(cv_rgb)
+plt.show()
 ```
+
+    Number of faces detected: 1
+
+![Screen5](images/face.png)
 
 - Detect Dogs
 - Create a CNN to Classify Dog Breeds (from Scratch)
