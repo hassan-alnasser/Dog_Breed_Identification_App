@@ -512,6 +512,13 @@ Create a CNN to classify dog breed.  At the end of your code cell block, summari
 
 **Answer**: I have trained with all models of three bottleneck features and found that the best is Xception model that gave the best accuracy value equals to 84.3%. Inception model gave good accuracy value as well equals to 82.3% but I preferred to go with Xception model because it is more accurate. I believe that the defined architecture is well suited for the problem as the Xception Bottleneck features are already designed for image classification. The details of the experiments performed and the final Network chosen are given below:
 
+odel      |  Train Acc (%) | Val Acc (%) | Test Acc (%) |
+|-----------|--------------|-------------|--------------|
+|VGG-19     |  46.8        | 37.25       | 39.59        |
+|ResNet-50  |  98.59       | 76.29       | 78.46 |
+|Inception  |  98.95       | 84.91       | 76.07 |
+|Xception   |  99.7        | 84.83       | 84.09 |
+
 - Write our Algorithm
 - Test our Algorithm
 
