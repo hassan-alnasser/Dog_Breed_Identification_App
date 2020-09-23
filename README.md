@@ -555,7 +555,7 @@ Write an algorithm that accepts a file path to an image and first determines whe
 
 Some sample output for our algorithm is provided below:
 
-![Sample Human Output](images/sample_human_output.png)
+![Sample Human Output](images/sample_human_2.png)
 
 The main algorithm for the project is in the code below, the algorithm uses the Xception pre-trained model to make predictions of dog breeds.
 
