@@ -24,9 +24,9 @@ Welcome to the Convolutional Neural Networks (CNN) project in the Data Scientist
 
 The classification algorithm accepts a file path to an image and first determines whether the image contains a human, dog, or neither. Then,
 
-    if a dog is detected in the image, return the predicted breed.
-    if a human is detected in the image, return the resembling dog breed.
-    if neither is detected in the image, provide output that indicates an error.
+   - If a dog is detected in the image, return the predicted breed.
+   - If a human is detected in the image, return the resembling dog breed.
+   - if neither is detected in the image, provide output that indicates an error.
 
 **_Screenshot 1_**
 
