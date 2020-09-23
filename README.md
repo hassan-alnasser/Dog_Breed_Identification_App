@@ -529,7 +529,54 @@ This can be attributed to either:
 
 The best architecture based on transfer learning from an Xception is what is used for the algorithm further below.
 
-- Write our Algorithm
+**The main prediction function:**
+
+```python
+### TODO: Write a function that takes a path to an image as input
+### and returns the dog breed that is predicted by the model.
+def predict_breed(img_path):
+    
+    # extract bottleneck features
+    bottleneck_feature = extract_network(path_to_tensor(img_path))
+    
+    # obtain predicted vector
+    pred_vector = network_model.predict(bottleneck_feature)
+    
+    # return predicted dog breed
+    return dog_names[np.argmax(pred_vector)]
+```
+
+#### Write your Algorithm:
+
+Write an algorithm that accepts a file path to an image and first determines whether the image contains a human, dog, or neither.  Then,
+- if a __dog__ is detected in the image, return the predicted breed.
+- if a __human__ is detected in the image, return the resembling dog breed.
+- if __neither__ is detected in the image, provide output that indicates an error.
+
+Some sample output for our algorithm is provided below:
+
+![Sample Human Output](images/sample_human_output.png)
+
+The main algorithm for the project is in the code below, the algorithm uses the Xception pre-trained model to make predictions of dog breeds.
+
+```python
+### TODO: Write your algorithm.
+### Feel free to use as many code cells as needed.
+def execute_app(img_path):
+    display(Image(img_path, width=200, height=200))
+    
+    if dog_detector(img_path) == 1:
+        print("Predicted as a dog, and breed is: ")
+        return predict_breed(img_path).partition('.')[-1]
+    
+    elif face_detector(img_path) == 1:
+        print("Predicted as a human, and resemble to: ")
+        return predict_breed(img_path).partition('.')[-1]
+    
+    else:
+        return print("Neither humans nor dogs are in the image. Please try again.")
+```       
+
 - Test our Algorithm
 
 <a id='run'></a>
