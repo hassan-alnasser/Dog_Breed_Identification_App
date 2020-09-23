@@ -60,7 +60,7 @@ You will need to download the following:
 
 Then we will use a systematic process workflow to make the project manageable, and this approach involved the following steps:
 
-### Import Dog Dataset:
+#### Import Dog Dataset:
 In the code cell below, we import a dataset of dog images. We populate a few variables through the use of the load_files function from the scikit-learn library:
 
     train_files, valid_files, test_files - numpy arrays containing file paths to images
@@ -108,7 +108,7 @@ print('There are %d test dog images.'% len(test_files))
     There are 835 validation dog images.
     There are 836 test dog images.
 
-### Import Human Dataset:
+#### Import Human Dataset:
 In the code cell below, we import a dataset of human images, where the file paths are stored in the numpy array human_files.
 
 ```python
@@ -124,7 +124,7 @@ print('There are %d total human images.' % len(human_files))
 ```
     There are 13233 total human images.
     
-### Detect Humans:
+#### Detect Humans:
 
 OpenCV’s implementation of Haar feature-based cascade classifiers was used detect human faces in images, and this was done by first converting the image into grey-scale, and then passing the grey-scale image as a parameter to the detectMultiScale function. This function executes the classifier stored in face_detector custom function that makes use of the OpenCV CascadeClassifier.
 
