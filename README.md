@@ -577,7 +577,21 @@ def execute_app(img_path):
         return print("Neither humans nor dogs are in the image. Please try again.")
 ```       
 
-- Test our Algorithm
+#### Test your Algorithm:
+
+In this section, you will take your new algorithm for a spin! What kind of dog does the algorithm think that you look like? If you have a dog, does it predict your dog's breed accurately? If you have a cat, does it mistakenly think that your cat is a dog?
+
+**Test Your Algorithm on Sample Images**
+Test your algorithm at least six images on your computer. Feel free to use any images you like. Use at least two human and two dog images. 
+
+**Question 6**: Is the output better than you expected :) ? Or worse :( ? Provide at least three possible points of improvement for your algorithm.
+**Answer**: The output is better than I expected. It managed to identify dog pictures as dogs and pictures of humans as humans. Overall, the result is promising compared to data size. The biggest improvement probably to have more training data with more augmentation so that model can be more generalized. 
+
+*Points of improvements for the algorithm:*
+- More variety of breeds is required to enhance the model prediction for humans
+- Improve the model to be able to classify pictures with noise
+- Increasing number of epoch might help as well
+- More images as per classes of dog, will help to improve model's accuracy
 
 <a id='run'></a>
 
