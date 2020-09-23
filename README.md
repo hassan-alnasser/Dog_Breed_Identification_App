@@ -220,7 +220,27 @@ This algorithmic choice necessitates that we communicate to the user that we acc
 - **Answer**:
 I think users have their reasons to expect great results from this face detection algorithm. However, they need to understand that algorithms are not perfect and have their own flaws. Custom algorithms can be implemented to handle this scenario, but it will definitely take much time and effort to produce promising results. The beauty of using OpenCV library is you can get more 90% accuracy with less effort.
 
-- Detect Dogs
+#### Detect Dogs:
+A pre-trained ResNet-50 model was used to detect dogs in images. Given an image, this pre-trained ResNet-50 model returns a prediction (derived from the available categories in ImageNet) for the object that is contained in the image. Since our installed Keras module was using TensorFlow as a backend, the image had to be pre-processed because Keras CNNs require a 4D array as input, with shape (number of samples,rows,columns,channels).
+
+```python
+from keras.applications.resnet50 import ResNet50
+from absl import logging
+logging._warn_preinit_stderr = 0
+
+# define ResNet50 model
+ResNet50_model = ResNet50(weights='imagenet')
+```
+
+Finally, to detect dogs, we used the following function:
+
+```python
+### returns "True" if a dog is detected in the image stored at img_path
+def dog_detector(img_path):
+    prediction = ResNet50_predict_labels(img_path)
+    return ((prediction <= 268) & (prediction >= 151))
+```
+
 - Create a CNN to Classify Dog Breeds (from Scratch)
 - Use a CNN to Classify Dog Breeds (using Transfer Learning)
 - Create a CNN to Classify Dog Breeds (using Transfer Learning)
