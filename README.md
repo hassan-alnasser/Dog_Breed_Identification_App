@@ -537,7 +537,7 @@ The best architecture based on transfer learning from an Xception is what is use
 def predict_breed(img_path):
     
     # extract bottleneck features
-    bottleneck_feature = extract_network(path_to_tensor(img_path))
+    bottleneck_feature = extract_Xception(path_to_tensor(img_path))
     
     # obtain predicted vector
     pred_vector = network_model.predict(bottleneck_feature)
