@@ -164,6 +164,60 @@ plt.show()
 
 ![Screen5](images/face.png)
 
+Before using any of the face detectors, it is standard procedure to convert the images to grayscale. The detectMultiScale function executes the classifier stored in face_cascade and takes the grayscale image as a parameter.
+
+In the above code, faces is a numpy array of detected faces, where each row corresponds to a detected face. Each detected face is a 1D array with four entries that specifies the bounding box of the detected face. The first two entries in the array (x and y) specify the horizontal and vertical positions of the top left corner of the bounding box. The last two entries in the array (w and h) specify the width and height of the box.
+
+Write a Human Face Detector¶
+We can use this procedure to write a function that returns True if a human face is detected in an image and False otherwise. This function, aptly named face_detector, takes a string-valued file path to an image as input and appears in the code block below.
+
+```python
+# returns "True" if face is detected in image stored at img_path
+def face_detector(img_path):
+    img = cv2.imread(img_path)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray)
+    return len(faces) > 0
+```    
+
+Assess the Human Face Detector
+Question 1: Use the code cell below to test the performance of the face_detector function.
+What percentage of the first 100 images in human_files have a detected human face? 
+What percentage of the first 100 images in dog_files have a detected human face? 
+Ideally, we would like 100% of human images with a detected face and 0% of dog images with a detected face. You will see that our algorithm falls short of this goal, but still gives acceptable performance. We extract the file paths for the first 100 images from each of the datasets and store them in the numpy arrays human_files_short and dog_files_short.
+
+Answer:
+Percentage of human faces detection as human: 99%
+Percentage of dog faces detection as human: 12%
+
+```python
+human_files_short = human_files[:100]
+dog_files_short = train_files[:100]
+# Do NOT modify the code above this line.
+
+human_detects_counter = 0
+dog_detects_counter = 0
+
+for index in range(len(human_files_short)):   
+    value = face_detector(human_files_short[index])
+    if (value):
+        human_detects_counter += 1
+for index in range(len(dog_files_short)):    
+    value = face_detector(dog_files_short[index])
+    if (value):
+        dog_detects_counter += 1
+    
+print('Percentage of human faces detection as human: {}%'.format(human_detects_counter))
+print('Percentage of dog faces detection as human: {}%'.format(dog_detects_counter))
+```    
+      Percentage of human faces detection as human: 99%
+      Percentage of dog faces detection as human: 12%
+
+Question 2: This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?
+
+Answer:
+I think users have their reasons to expect great results from this face detection algorithm. However, they need to understand that algorithms are not perfect and have their own flaws. Custom algorithms can be implemented to handle this scenario, but it will definitely take much time and effort to produce promising results. The beauty of using OpenCV library is you can get more 90% accuracy with less effort.
+
 - Detect Dogs
 - Create a CNN to Classify Dog Breeds (from Scratch)
 - Use a CNN to Classify Dog Breeds (using Transfer Learning)
