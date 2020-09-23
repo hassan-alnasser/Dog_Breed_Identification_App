@@ -6,6 +6,7 @@
 ## Table of Contents
 
 - [Project Overview](#overview)
+- [Project Definition](#definition)
 - [Project Process](#notebook)
 - [Web App](#run)
 - [Conclusion](#conclusion)
@@ -25,9 +26,25 @@ Welcome to the Convolutional Neural Networks (CNN) project in the Data Scientist
 
 ![main](images/Screenshot_4.png)
 
+<a id='definition'></a>
+
+### 2. Project Definition
+
+There are many strategies for image classification solutions, and one of the most popular strategy is the use of Convolutional Neural Network (CNN). These are specialized type of neural network model designed for working with two-dimensional image data sets and can also be used for one-dimensional or three-dimensional data sets. In software modelling, CNNs take the form of having a “convolutional” layer. At a foundational level, a convolution is a linear operation that involves the multiplication of weights with the input, very similar to traditional neural networks such as the perceptron.
+
+Due to their flexibility, I have chosen to implement a dog breed classifier using CNN based on the Keras library. While the solution could be achieved using other libraries such as Pytorch or Caffe, for this particular project Keras was chosen due to it’s ease of use and syntactic simplicity, facilitating fast development.
+
+We are going to create a simple CNN classifier using Keras and measure it’s performance against using a random selection of dog breeds. The objective here is to create a classifier that beats the performance of using a naïve approach, being the selection of dog breed in a random fashion. The classifier will be designed bearing in mind the training times, and hence we will avoid having a classifier with more than 5 convolutional layers, and we will be judicious with the use of normalisation techniques as they can easily double or triple training times.
+
+Next designing the classifier will be the use of transfer learning through testing popular networks such as VGG16, VGG19 and Xception. By tracking their performance during training and testing, the best performing classifier will be selected and used as the prediction CNN in our dog breed classier algorithm.
+
+While there are many metrics that one could use to better judge the performance of a CNN, for this project an “accuracy” metric will be used with the object being to create a classifier that achieves over 60% classification accuracy. Accuracy, as a performance metric has been due to it’s simplicity and it is also the metric chosen by Udacity for the initial implementation.
+
+By the end of the project, we anticipate having built a dog breed classification algorithm that makes use of transfer learning to increase accuracy and has the capabilities of predicting the breed of a given dog image with over 60% accuracy. The algorithm will be powerful enough to detect human faces in images and predict what dog breed the face resembles.
+
 <a id='notebook'></a>
 
-### 2. Project Process
+### 3. Project Process
 
 You will need to download the following:
 
@@ -47,7 +64,7 @@ Then, we will do the following:
 
 <a id='run'></a>
 
-## 3. Web App
+## 4. Web App
 
 Now it's time to see the prediction in a user friendly way.
 
@@ -77,7 +94,7 @@ This will start the web app and will direct you to a URL where you can upload im
 
 <a id='conclusion'></a>
 
-## 4. Conclusion
+## 5. Conclusion
 
 As we will notice, the model need more enhancements on its accuracy. This will require improving the algorithm to give better results at a larger scale or in a production environment. The following should be considered:
 
@@ -88,7 +105,7 @@ As we will notice, the model need more enhancements on its accuracy. This will r
 
 <a id='files'></a>
 
-## 5. Files
+## 6. Files
 
 <pre>
 .
@@ -112,7 +129,7 @@ As we will notice, the model need more enhancements on its accuracy. This will r
 
 <a id='sw'></a>
 
-## 6. Software Requirements
+## 7. Software Requirements
 
 This project uses **Python 3.7** and the necessary libraries are mentioned in _requirements.txt_.
 
@@ -122,7 +139,7 @@ pip3 install -r requirements.txt
 
 <a id='credits'></a>
 
-## 7. Credits and Acknowledgements <a name='licensing'></a>
+## 8. Credits and Acknowledgements <a name='licensing'></a>
 
 Must give credit to [Udacity](https://www.udacity.com/courses/all) for creating this beautiful learning experience.  
 This project is licensed under the [MIT License](https://github.com/jeferson-sb/dogAI/blob/master/LICENSE).
