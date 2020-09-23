@@ -224,7 +224,7 @@ I think users have their reasons to expect great results from this face detectio
 A pre-trained ResNet-50 model was used to detect dogs in images. Given an image, this pre-trained ResNet-50 model returns a prediction (derived from the available categories in ImageNet) for the object that is contained in the image. Since our installed Keras module was using TensorFlow as a backend, the image had to be pre-processed because Keras CNNs require a 4D array as input, with shape (number of samples,rows,columns,channels).
 
 ```python
-from keras.applications.resnet50 import ResNet50
+from tensorflow.keras.applications.resnet50 import ResNet50
 from absl import logging
 logging._warn_preinit_stderr = 0
 
@@ -252,7 +252,7 @@ The function above returns a value between 151 and 268 (inclusive) because the c
 
 **Answer**:
 
-    Percentage of human faces detection as dogs: 1%.
+    Percentage of human faces detection as dogs: 0%.
     Percentage of dog faces detection as dogs: 100%
 
 
@@ -321,9 +321,9 @@ We have imported some Python modules to get you started, but feel free to import
 **Answer**: I have defined three filters layer with structure as 16, 32, 64 and with max-pooling layer to reduce the dimensionality from the data. I have used two dropouts and dense layers to optimize CNN and reduce the changes to overfitting. However, I think more work is needed to achieve the best performance. For this, argumented the dataset to add more training data.
 
 ```python
-from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
-from keras.layers import Dropout, Flatten, Dense
-from keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
+from tensorflow.keras.layers import Dropout, Flatten, Dense
+from tensorflow.keras.models import Sequential
 
 # create the architecture using Sequential()
 model = Sequential()
