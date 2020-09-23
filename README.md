@@ -61,6 +61,53 @@ You will need to download the following:
 Then we will use a systematic process workflow to make the project manageable, and this approach involved the following steps:
 
 - Import Datasets
+In the code cell below, we import a dataset of dog images. We populate a few variables through the use of the load_files function from the scikit-learn library:
+
+    train_files, valid_files, test_files - numpy arrays containing file paths to images
+    train_targets, valid_targets, test_targets - numpy arrays containing onehot-encoded classification labels
+    dog_names - list of string-valued dog breed names for translating labels
+
+```python
+from sklearn.datasets import load_files       
+from keras.utils import np_utils
+import numpy as np
+from glob import glob
+import PIL
+from PIL import Image
+from IPython.display import display, Image 
+
+# define function to load train, test, and validation datasets
+def load_dataset(path):
+    data = load_files(path)
+    dog_files = np.array(data['filenames'])
+    dog_targets = np_utils.to_categorical(np.array(data['target']), 133)
+    return dog_files, dog_targets
+
+# load train, test, and validation datasets
+train_files, train_targets = load_dataset('data/dogImages/train')
+valid_files, valid_targets = load_dataset('data/dogImages/valid')
+test_files, test_targets = load_dataset('data/dogImages/test')
+
+# load list of dog names
+dog_names = [item[20:-1] for item in sorted(glob("data/dogImages/train/*/"))]
+
+# print statistics about the dataset
+print('There are %d total dog categories.' % len(dog_names))
+print('There are %s total dog images.\n' % len(np.hstack([train_files, valid_files, test_files])))
+print('There are %d training dog images.' % len(train_files))
+print('There are %d validation dog images.' % len(valid_files))
+print('There are %d test dog images.'% len(test_files))
+```
+
+    Using TensorFlow backend.
+
+    There are 133 total dog categories.
+    There are 8351 total dog images.
+
+    There are 6680 training dog images.
+    There are 835 validation dog images.
+    There are 836 test dog images.
+
 - Detect Humans
 - Detect Dogs
 - Create a CNN to Classify Dog Breeds (from Scratch)
