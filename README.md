@@ -241,6 +241,23 @@ def dog_detector(img_path):
     return ((prediction <= 268) & (prediction >= 151))
 ```
 
+The function above returns a value between 151 and 268 (inclusive) because the categories corresponding to dogs appear in an uninterrupted sequence and correspond to dictionary keys 151–268, inclusive.
+
+**Assess the Dog Detector**:
+
+**Question 3*: Use the code cell below to test the performance of your dog_detector function.
+
+    What percentage of the images in human_files_short have a detected dog?
+    What percentage of the images in dog_files_short have a detected dog?
+
+**Answer**:
+
+    Percentage of dog faces detection as dogs: 100%.
+    Percentage of human faces detection as dogs: 1%
+
+
+Having defined and tested functions for detecting humans and dogs in images, the next step is to create a CNN that classifies dog breeds. The goal is to create a CNN architecture that achieves at least 1% accuracy from scratch without the use of transfer learning.
+
 - Create a CNN to Classify Dog Breeds (from Scratch)
 - Use a CNN to Classify Dog Breeds (using Transfer Learning)
 - Create a CNN to Classify Dog Breeds (using Transfer Learning)
