@@ -535,7 +535,7 @@ The ResNet, Inception and Xception architectures, however, use architectures (sk
 
 The Xception Network in particular uses an extreme Inception module architecure, which consists of 1x1 convolution filters, followed by multiple 3x3 or 5x5 filters, thus decoupling the mapping of cross-channels correlations and spatial correlations in the feature maps of convolutional neural networks [1]
 
-References[1]: *Xception: Deep Learning with Depthwise Separable Convolutions*    
+References[1]: [*Xception: Deep Learning with Depthwise Separable Convolutions*](http://openaccess.thecvf.com/content_cvpr_2017/papers/Chollet_Xception_Deep_Learning_CVPR_2017_paper.pdf)    
 
 The best architecture based on transfer learning from an Xception is what is used for the algorithm further below.
 
