@@ -447,7 +447,71 @@ print('Test accuracy: %.4f%%' % test_accuracy)
 ```
       Test accuracy: 41.7464%      
 
-- Create a CNN to Classify Dog Breeds (using Transfer Learning)
+#### Create a CNN to Classify Dog Breeds (using Transfer Learning)
+
+You will now use transfer learning to create a CNN that can identify dog breed from images.  Your CNN must attain at least 60% accuracy on the test set.
+
+In Step 4, we used transfer learning to create a CNN using VGG-16 bottleneck features.  In this section, you must use the bottleneck features from a different pre-trained model.  To make things easier for you, we have pre-computed the features for all of the networks that are currently available in Keras:
+- [VGG-19](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogVGG19Data.npz) bottleneck features
+- [ResNet-50](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogResnet50Data.npz) bottleneck features
+- [Inception](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogInceptionV3Data.npz) bottleneck features
+- [Xception](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogXceptionData.npz) bottleneck features
+
+The files are encoded as such:
+
+    Dog{network}Data.npz
+
+where `{network}`, in the above filename, can be one of `VGG19`, `Resnet50`, `InceptionV3`, or `Xception`.  Pick one of the above architectures, download the corresponding bottleneck features, and store the downloaded file in the `bottleneck_features/` folder in the repository.
+
+**Obtain Bottleneck Features**:
+
+In the code block below, extract the bottleneck features corresponding to the train, test, and validation sets by running the following:
+
+    bottleneck_features = np.load('bottleneck_features/Dog{network}Data.npz')
+    train_{network} = bottleneck_features['train']
+    valid_{network} = bottleneck_features['valid']
+    test_{network} = bottleneck_features['test']
+
+
+```python
+### TODO: Obtain bottleneck features from another pre-trained CNN.
+# Compare all four witht same network and see which one is better
+# Choose 1 of the following four 'ResNet-50', 'Inception', 'Xception', 'VGG-19'
+
+network = 'Xception'
+
+if network =='ResNet-50':
+    bottleneck_features_network = np.load('bottleneck_features/DogResnet50Data.npz')
+elif network == 'Inception':
+    bottleneck_features_network = np.load('bottleneck_features/DogInceptionV3Data.npz')
+elif network =='Xception':
+    bottleneck_features_network = np.load('bottleneck_features/DogXceptionData.npz')
+elif network =='VGG-19':
+    bottleneck_features_network = np.load('bottleneck_features/DogVGG19Data.npz')
+
+train_network = bottleneck_features_network['train']
+valid_network = bottleneck_features_network['valid']
+test_network = bottleneck_features_network['test']
+
+print("Shape of train_resnet: {}".format(train_network.shape))
+print("Shape of valid_resnet: {}".format(valid_network.shape))
+print("Shape of test_resnet: {}".format(test_network.shape))
+```
+    Shape of train_resnet: (6680, 7, 7, 2048)
+    Shape of valid_resnet: (835, 7, 7, 2048)
+    Shape of test_resnet: (836, 7, 7, 2048)
+
+
+**Model Architecture**:
+
+Create a CNN to classify dog breed.  At the end of your code cell block, summarize the layers of your model by executing the line:
+
+        <your model's name>.summary()
+
+**Question 5**: Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.
+
+**Answer**: I have trained with all models of three bottleneck features and found that the best is Xception model that gave the best accuracy value equals to 84.3%. Inception model gave good accuracy value as well equals to 82.3% but I preferred to go with Xception model because it is more accurate. I believe that the defined architecture is well suited for the problem as the Xception Bottleneck features are already designed for image classification. The details of the experiments performed and the final Network chosen are given below:
+
 - Write our Algorithm
 - Test our Algorithm
 
