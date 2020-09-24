@@ -616,14 +616,11 @@ print(execute_app("images/7.jpg"))
 print(execute_app("images/8.jpg"))
 ```
 
-![pic1](images/1.jpg)
-![pic2](images/2.jpg)
-![pic3](images/3.jpg)
-![pic4](images/4.jpg)
-![pic5](images/5.jpg)
-![pic6](images/6.jpg)
-![pic7](images/7.jpg)
-![pic8](images/8.jpg)
+![pic1](images/pic1.png)
+
+![pic2](images/pic2.png)
+
+![pic3](images/pic3.pmg)
 
 
 <a id='run'></a>
