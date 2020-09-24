@@ -74,6 +74,8 @@ from glob import glob
 import PIL
 from PIL import Image
 from IPython.display import display, Image 
+from warnings import filterwarnings
+filterwarnings("ignore")
 
 # define function to load train, test, and validation datasets
 def load_dataset(path):
