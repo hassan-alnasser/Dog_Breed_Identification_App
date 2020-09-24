@@ -444,7 +444,7 @@ VGG16_predictions = [np.argmax(VGG16_model.predict(np.expand_dims(feature, axis=
 test_accuracy = 100*np.sum(np.array(VGG16_predictions)==np.argmax(test_targets, axis=1))/len(VGG16_predictions)
 print('Test accuracy: %.4f%%' % test_accuracy)
 ```
-      Test accuracy: 47.1292%      
+      Test accuracy: 41.1483%      
 
 #### Create a CNN to Classify Dog Breeds (using Transfer Learning)
 
