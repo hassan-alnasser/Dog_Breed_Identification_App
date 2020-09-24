@@ -655,6 +655,10 @@ This will start the web app and will direct you to a URL where you can upload im
 
 ![Screen4](images/Screenshot_8.png)
 
+**_Screenshot 6_**
+
+![Screen5](images/Screenshot_9.png)
+
 <a id='files'></a>
 
 ## 5. Files
