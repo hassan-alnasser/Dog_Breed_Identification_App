@@ -10,6 +10,7 @@
 - [Project Process](#notebook)
 - [Web App](#run)
 - [Files](#files)
+- [Conclusion](#conclusion)
 - [Software Requirements](#sw)
 - [Credits and Acknowledgements](#credits)
 
@@ -683,9 +684,16 @@ This will start the web app and will direct you to a URL where you can upload im
 └── requirements.txt---------------------------# REQUIREMENTS FOR APP
 </pre>
 
+<a id='conclusion'></a>
+
+## 6. Conclusion 
+In this project, different deep learning machine vision algorithms are showcased. Face Detection Haar Cascade Classifier with OpenCV, a dog detection algorithm with a ImageNet pretrained ResNet50 and two dog breed classifiers, one built from scratch and one use transfer learning. Each algorithm give good accuracy, and the final combined algorithm give an accuracy of around 85%. 
+
+I was surprised by the good results of the algorithm i.e. Xception. Without doing too much fine-tuning, the algorithm was already providing high accuracy and the predictions were mostly correct. An accuracy of over 85%. For human faces it seems easier if the face has distinct features that resembles a certain dog breed. Otherwise, it starts to guess from some features, but the results vary. For higher accuracy, the parameters could be further optimized, maybe also including more layers into the model. Further, number of epochs could be increased to 40 to lower the loss. Also by providing an even bigger training data set, the classification accuracy could be improved further. Also, possible ways of improving the network performance for future works is to reduce both overfitting and class imbalance.
+
 <a id='sw'></a>
 
-## 6. Software Requirements
+## 7. Software Requirements
 
 This project uses **Python 3.7** and the necessary libraries are mentioned in _requirements.txt_.
 
@@ -695,7 +703,7 @@ pip3 install -r requirements.txt
 
 <a id='credits'></a>
 
-## 7. Credits and Acknowledgements <a name='licensing'></a>
+## 8. Credits and Acknowledgements <a name='licensing'></a>
 
 Must give credit to [Udacity](https://www.udacity.com/courses/all) for creating this beautiful learning experience.  
 This project is licensed under the [MIT License](https://github.com/jeferson-sb/dogAI/blob/master/LICENSE).
