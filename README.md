@@ -601,6 +601,31 @@ Test your algorithm at least six images on your computer. Feel free to use any i
 - Increasing number of epoch might help as well
 - More images as per classes of dog, will help to improve model's accuracy
 
+```python
+## TODO: Execute your algorithm from Step 6 on
+## at least 6 images on your computer.
+## Feel free to use as many code cells as needed.
+
+print(execute_app("images/1.jpg"))
+print(execute_app("images/2.jpg"))
+print(execute_app("images/3.jpg"))
+print(execute_app("images/4.jpg"))
+print(execute_app("images/5.jpg"))
+print(execute_app("images/6.jpg"))
+print(execute_app("images/7.jpg"))
+print(execute_app("images/8.jpg"))
+```
+
+![pic1](images/1.jpg)
+![pic2](images/2.jpg)
+![pic3](images/3.jpg)
+![pic4](images/4.jpg)
+![pic5](images/5.jpg)
+![pic6](images/6.jpg)
+![pic7](images/7.jpg)
+![pic8](images/8.jpg)
+
+
 <a id='run'></a>
 
 ## 4. Web App
