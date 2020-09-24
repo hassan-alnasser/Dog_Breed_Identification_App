@@ -645,7 +645,7 @@ This will start the web app and will direct you to a URL where you can upload im
 
 **_Screenshot 3_**
 
-![Screen2](images/Screenshot_6.png)
+![Screen2](images/Screenshot_6.png) 
 
 **_Screenshot 4_**
 
