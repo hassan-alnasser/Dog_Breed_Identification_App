@@ -518,7 +518,7 @@ Create a CNN to classify dog breed.  At the end of your code cell block, summari
 |Inception  |  98.89       | 85.99       | 80.26        |
 |Xception   |  98.38       | 85.39       | 85.29        |
 
-As you can see from the results above, all networks except for the VGG-19 have a test accuracy of higher than 60% with the Xcpetion network performing the best at 84%. More importantly though, there is a large difference between training and test accuracy for all the networks.The most important parameters in this case would be the different accuracies. All the models have been trained for 20 epochs.
+As you can see from the results above, all networks except for the VGG-19 have a test accuracy of higher than 60% with the Xcpetion network performing the best at 85%. More importantly though, there is a large difference between training and test accuracy for all the networks.The most important parameters in this case would be the different accuracies. All the models have been trained for 20 epochs.
 
 This can be attributed to either:
 
