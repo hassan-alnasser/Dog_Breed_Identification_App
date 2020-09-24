@@ -395,7 +395,7 @@ test_accuracy = 100*np.sum(np.array(dog_breed_predictions)==np.argmax(test_targe
 print('Test accuracy: %.4f%%' % test_accuracy)
 ```
 
-      Test accuracy:  7.6555%
+      Test accuracy:  6.2201%
 
 #### Use a CNN to Classify Dog Breeds:
 
@@ -444,7 +444,7 @@ VGG16_predictions = [np.argmax(VGG16_model.predict(np.expand_dims(feature, axis=
 test_accuracy = 100*np.sum(np.array(VGG16_predictions)==np.argmax(test_targets, axis=1))/len(VGG16_predictions)
 print('Test accuracy: %.4f%%' % test_accuracy)
 ```
-      Test accuracy: 43.0622%      
+      Test accuracy: 47.1292%      
 
 #### Create a CNN to Classify Dog Breeds (using Transfer Learning)
 
@@ -509,14 +509,14 @@ Create a CNN to classify dog breed.  At the end of your code cell block, summari
 
 **Question 5**: Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.
 
-**Answer**: I have trained with all models of three bottleneck features and found that the best is Xception model that gave the best accuracy value equals to 85.41%. I believe that the defined architecture is well suited for the problem as the Xception Bottleneck features are already designed for image classification. The details of the experiments performed and the final Network chosen are given below:
+**Answer**: I have trained with all models of three bottleneck features and found that the best is Xception model that gave the best accuracy value equals to 85.29%. I believe that the defined architecture is well suited for the problem as the Xception Bottleneck features are already designed for image classification. The details of the experiments performed and the final Network chosen are given below:
 
 |Model      | Train Acc (%)| Val Acc (%) | Test Acc (%) |
 |-----------|--------------|-------------|--------------|
 |VGG-19     |  62.02       | 49.82       | 51.44        |
 |ResNet-50  |  99.82       | 82.75       | 80.74        |
 |Inception  |  98.89       | 85.99       | 80.26        |
-|Xception   |  97.84       | 84.31       | 85.41        |
+|Xception   |  98.38       | 85.39       | 85.29        |
 
 As you can see from the results above, all networks except for the VGG-19 have a test accuracy of higher than 60% with the Xcpetion network performing the best at 84%. More importantly though, there is a large difference between training and test accuracy for all the networks.The most important parameters in this case would be the different accuracies. All the models have been trained for 20 epochs.
 
