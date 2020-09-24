@@ -16,7 +16,7 @@ class DogModel:
  
   def __init__(self):         
     
-    self.model = load_model('model/weights.best.Xception.hdf5')            
+    self.model = load_model('model/weights.best.model.hdf5')            
     self.model_include_top_false = Xception(weights='imagenet',include_top=False)      
     self.this_model = Xception(weights='imagenet')    
     self.graph = tf.get_default_graph()    
