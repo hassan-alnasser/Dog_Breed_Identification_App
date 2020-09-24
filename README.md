@@ -9,7 +9,6 @@
 - [Project Definition](#definition)
 - [Project Process](#notebook)
 - [Web App](#run)
-- [Conclusion](#conclusion)
 - [Files](#files)
 - [Software Requirements](#sw)
 - [Credits and Acknowledgements](#credits)
@@ -633,20 +632,9 @@ This will start the web app and will direct you to a URL where you can upload im
 
 ![Screen4](images/Screenshot_8.png)
 
-<a id='conclusion'></a>
-
-## 5. Conclusion
-
-As we will notice, the model need more enhancements on its accuracy. This will require improving the algorithm to give better results at a larger scale or in a production environment. The following should be considered:
-
-##### 1. More variety of breeds is required to enhance the model prediction for humans
-##### 2. Improve the model to be able to classify pictures with noise
-##### 3. Increasing number of epoch might help as well
-##### 4. More images as per classes of dog, will help to improve model's accuracy
-
 <a id='files'></a>
 
-## 6. Files
+## 5. Files
 
 <pre>
 .
@@ -670,7 +658,7 @@ As we will notice, the model need more enhancements on its accuracy. This will r
 
 <a id='sw'></a>
 
-## 7. Software Requirements
+## 6. Software Requirements
 
 This project uses **Python 3.7** and the necessary libraries are mentioned in _requirements.txt_.
 
@@ -680,7 +668,7 @@ pip3 install -r requirements.txt
 
 <a id='credits'></a>
 
-## 8. Credits and Acknowledgements <a name='licensing'></a>
+## 7. Credits and Acknowledgements <a name='licensing'></a>
 
 Must give credit to [Udacity](https://www.udacity.com/courses/all) for creating this beautiful learning experience.  
 This project is licensed under the [MIT License](https://github.com/jeferson-sb/dogAI/blob/master/LICENSE).
