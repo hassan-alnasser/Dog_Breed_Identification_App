@@ -513,13 +513,12 @@ Create a CNN to classify dog breed.  At the end of your code cell block, summari
 
 |Model      | Train Acc (%)| Val Acc (%) | Test Acc (%) |
 |-----------|--------------|-------------|--------------|
-|VGG-19     |  95.52       | 73.29       | 71.65        |
-|ResNet-50  |  99.25       | 82.04       | 81.69        |
-|Inception  |  92.62       | 85.15       | 81.69        |
-|Xception   |  98.65       | 85.39       | 85.41        |
+|VGG-19     |  62.02       | 49.82       | 51.44        |
+|ResNet-50  |  99.82       | 82.75       | 80.74        |
+|Inception  |  98.89       | 85.99       | 80.26        |
+|Xception   |  97.84       | 84.31       | 85.41        |
 
-The results are summarized above, the most important parameters in this case would be the different accuracies. All the models have been trained for 20 epochs.
-As you can see from the results above, all networks have a test accuracy of higher than 60% with the Xcpetion network performing the best at 85%. More importantly though, there is a large difference between training and test accuracy for all the networks.
+As you can see from the results above, all networks except for the VGG-19 have a test accuracy of higher than 60% with the Xcpetion network performing the best at 84%. More importantly though, there is a large difference between training and test accuracy for all the networks.The most important parameters in this case would be the different accuracies. All the models have been trained for 20 epochs.
 
 This can be attributed to either:
 
