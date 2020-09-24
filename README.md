@@ -620,7 +620,7 @@ print(execute_app("images/8.jpg"))
 
 ![pic2](images/pic2.png)
 
-![pic3](images/pic3.pmg)
+![pic3](images/pic3.png)
 
 
 <a id='run'></a>
