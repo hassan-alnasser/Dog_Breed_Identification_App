@@ -38,7 +38,7 @@
 
 <a id='overview'></a>
 
-	### Project Overview 
+### Project Overview 
 
 This project aims to create a core algorithm to classify dog images according to their breed, that could be used as part of mobile or web app.
 
@@ -50,7 +50,7 @@ If neither is detected, the algorithm should output an error!
 
 <a id='statement'></a>
 
-	### Problem Statement 
+### Problem Statement 
 	
 The classifier used is Convolutional Neural Network (CNN), which is known as state-of-the-art of image classification. The following steps are involved:
 
@@ -68,7 +68,7 @@ The main library used to build CNN architecture throughout this project is Keras
 
 <a id='metrics'></a>
 
-	### Metrics 
+### Metrics 
 
 While there are many metrics that one could use to better judge the performance of a CNN, for this project an “accuracy” metric will be used with the object being to create a classifier that achieves over 60% classification accuracy.
 
@@ -84,7 +84,7 @@ Accuracy varies according to the network we use for transfer learning. We tested
 
 <a id='exploration'></a>
 
-	### Data Exploration
+### Data Exploration
 
 The data for this project is provided by the following links:
 
@@ -118,7 +118,7 @@ For human images dataset there is a total of 13233 images stored under 5750 fold
 
 <a id='visualization'></a>
 
-	### Data Visualization
+### Data Visualization
 
 The task of assigning breed to dogs from images is considered exceptionally challenging. To see why, consider that even a human would have great difficulty in distinguishing between a Brittany and a Welsh Springer Spaniel.
 
@@ -144,7 +144,7 @@ Yellow Labrador | Chocolate Labrador | Black Labrador
 
 <a id='preprocessing'></a>
 
-	### Data Preprocessing
+### Data Preprocessing
 
 When using TensorFlow as backend, Keras CNNs require a 4D array as input, with shape (**nb_samples, rows, columns, channels**)
 
@@ -189,7 +189,7 @@ test_tensors = paths_to_tensor(test_files).astype('float32')/255
 
 <a id='implementation'></a>
 
-	### Implementation
+### Implementation
 
 The implementation process can be split into two main steps:
 
@@ -258,7 +258,7 @@ Test accuracy: 8.2536%
 
 <a id='refinement'></a>
 
-	### Refinement
+### Refinement
 
 Building CNN from scratch was not great. Its accuracy was about 8.25%. This is better than random, but there’s a lot of room to improve. First, the VGG16 model was utilized. The best it could do was 41.14% accuracy.
 
@@ -305,7 +305,7 @@ The best architecture based on transfer learning from an Xception is what is use
 
 <a id='evaluation'></a>
 
-	### Model Evaluation and Validation
+### Model Evaluation and Validation
 
 Each model is trained during 20 epochs. A validation set is used to evaluate the model and checks whether validation loss decreases. If this is the case, the model weights are saved with a checkpointer and will be loaded later for testing.
 
@@ -321,7 +321,7 @@ As of human images, the results is quite convincing, however, this is the fun pa
 
 <a id='justification'></a>
 
-	### Justification
+### Justification
 
 The final model achieves a classification accuracy of **85.29%** on the test set, much higher than the benchmark. Transfer learning based on Xception is better than VGG-16.
 
@@ -347,21 +347,21 @@ The Xception Network in particular uses an extreme Inception module architecture
 
 <a id='reflection'></a>
 
-	### Reflection
+### Reflection
 
 To summarize, this project has been passing the following steps:
 
-	- Problem overview and statement
+- Problem overview and statement
 
-	- Import dataset, explore data and pre-process input images
+- Import dataset, explore data and pre-process input images
 
-	- Build helper functions for the final algorithm
+- Build helper functions for the final algorithm
 
-	- Build different CNN architectures and benchmark the classifiers
+- Build different CNN architectures and benchmark the classifiers
 
-	- Choose final model and integrate it to final algorithm
+- Choose final model and integrate it to final algorithm
 
-	- Evaluate and verify the algorithm robustness
+- Evaluate and verify the algorithm robustness
 
 The most challenging and interesting part was building models from scratch. There is no better way to understand in deep CNNs than building and experiment with my own models.
 
@@ -369,17 +369,17 @@ Finally the results were much better than I expected.
 
 <a id='improvement'></a>
 
-	### Improvement
+### Improvement
 
 To improve the model performance, several pathways are worth considering:
 
-	- More variety of breeds is required to enhance the model prediction for humans
+- More variety of breeds is required to enhance the model prediction for humans
 
-	- Improve the model to be able to classify pictures with noise
+- Improve the model to be able to classify pictures with noise
 
-	- Increasing number of epoch might help as well
+- Increasing number of epoch might help as well
 
-	- More images as per classes of dog, will help to improve model's accuracy
+- More images as per classes of dog, will help to improve model's accuracy
 
 <a id='app'></a>
 
