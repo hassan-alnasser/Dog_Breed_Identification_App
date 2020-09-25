@@ -40,9 +40,9 @@ This project aims to create a core algorithm to classify dog images according to
 
 The application should provide a fun user experience as it will accept not only dog images but any user-supplied image as input.
 
-If a dog is detected, the algorithm should output a prediction of the dog’s breed. If a human is detected, the output should be the most resembling dog breed.
-
-If neither is detected, the algorithm should output an error!
+- If a dog is detected, the algorithm should output a prediction of the dog’s breed.
+- If a human is detected, the output should be the most resembling dog breed.
+- If neither is detected, the algorithm should output an error!
 
 <a id='statement'></a>
 
