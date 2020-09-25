@@ -4,13 +4,13 @@
    
 ## Table of Contents
 
-- [Project Definition](#definition)
+[Project Definition](#definition)
 
-	-[Project Overview](#overview)
+	[Project Overview](#overview)
 	
-	[Problem Statement](#statement)
+[Problem Statement](#statement)
 	
-	[Metrics](#metrics)
+[Metrics](#metrics)
 	
 - [Analysis](#analysis)
 	[Data Exploration](#exploration)
