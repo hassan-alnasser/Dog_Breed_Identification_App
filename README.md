@@ -5,30 +5,26 @@
 ## Table of Contents
 
 [Project Definition](#definition)
-
-   [Project Overview](#overview)
-	
-[Problem Statement](#statement)
-	
-[Metrics](#metrics)
-	
-- [Analysis](#analysis)
-	[Data Exploration](#exploration)
-	[Data Visualization](#visualization)
-- [Methodology](#methodology)
-	[Data Preprocessing](#preprocessing)
-	[Implementation](#implementation)
-	[Refinement](#refinement)
-- [Results](#results)
-	[Model Evaluation and Validation](#evaluation)
-	[Justification](#justification)
-- [Conclusion](#conclusion)
-	[Reflection](#reflection)
-	[Improvement](#improvement)
-- [Web Application](#app)
-- [Files](#files)
-- [Software Requirements](#sw)
-- [Credits and Acknowledgments](#credits)
+- [Project Overview](#overview)	
+[Problem Statement](#statement)	
+[Metrics](#metrics)	
+[Analysis](#analysis)
+[Data Exploration](#exploration)
+[Data Visualization](#visualization)
+[Methodology](#methodology)
+[Data Preprocessing](#preprocessing)
+[Implementation](#implementation)
+[Refinement](#refinement)
+[Results](#results)
+[Model Evaluation and Validation](#evaluation)
+[Justification](#justification)
+[Conclusion](#conclusion)
+[Reflection](#reflection)
+[Improvement](#improvement)
+[Web Application](#app)
+[Files](#files)
+[Software Requirements](#sw)
+[Credits and Acknowledgments](#credits)
 
 ***
 
