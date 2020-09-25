@@ -198,6 +198,7 @@ Based on what we know about the purpose of transfer learning, it is likely that 
 
 For basic CNN, I chose the following architecture:
 
+```python
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -227,6 +228,7 @@ Total params: 25,165,677
 Trainable params: 25,165,677
 Non-trainable params: 0
 _________________________________________________________________
+```
 
 I used a model with three 2D convolutional layers. First, I choose 16 as the number of channels as this is a reasonable amount that will be increasing by a factor of 2 throughout layers.
 
