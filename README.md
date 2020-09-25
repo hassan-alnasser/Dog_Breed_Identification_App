@@ -1,107 +1,97 @@
 # Data Scientist Nanodegree
 
-## Dog Breed Identification App
-### Dog Breed Classifier
+## Dog Breed Classifier
    
 ## Table of Contents
 
-- [Project Overview](#overview)
 - [Project Definition](#definition)
-- [Project Process](#notebook)
-- [Web App](#run)
-- [Files](#files)
+	-[Project Overview](#overview)
+	[Problem Statement](#statement)
+	[Metrics](#metrics)
+- [Analysis](#analysis)
+	[Data Exploration](#exploration)
+	[Data Visualization](#visualization)
+- [Methodology](#methodology)
+	[Data Preprocessing](#preprocessing)
+	[Implementation](#implementation)
+	[Refinement](#refinement)
+- [Results](#results)
+	[Model Evaluation and Validation](#evaluation)
+	[Justification](#justification)
 - [Conclusion](#conclusion)
+	[Reflection](#reflection)
+	[Improvement](#improvement)
+- [Web Application](#app)
+- [Files](#files)
 - [Software Requirements](#sw)
-- [Credits and Acknowledgements](#credits)
+- [Credits and Acknowledgments](#credits)
 
 ***
 
-<a id='overview'></a>
-
-## 1. Project Overview
-
-Welcome to the Convolutional Neural Networks (CNN) project in the Data Scientist Nanodegree! In this project, you will learn how to build a pipeline that can be used within a web or mobile app to process real-world, user-supplied images. 
-
-The classification algorithm accepts a file path to an image and first determines whether the image contains a human, dog, or neither. Then,
-
-   - If a dog is detected in the image, return the predicted breed.
-   - If a human is detected in the image, return the resembling dog breed.
-   - If neither is detected in the image, provide output that indicates an error.
-
-**_Screenshot 1_**
-
-![main](images/Screenshot_4.png)
-
 <a id='definition'></a>
 
-### 2. Project Definition
+## 1. Project Definition
 
-There are many strategies for image classification solutions, and one of the most popular strategy is the use of Convolutional Neural Network (CNN). These are specialized type of neural network model designed for working with two-dimensional image data sets and can also be used for one-dimensional or three-dimensional data sets. In software modelling, CNNs take the form of having a “convolutional” layer. At a foundational level, a convolution is a linear operation that involves the multiplication of weights with the input, very similar to traditional neural networks such as the perceptron.
+<a id='overview'></a>
 
-Due to their flexibility, I have chosen to implement a dog breed classifier using CNN based on the Keras library. While the solution could be achieved using other libraries such as Pytorch or Caffe, for this particular project Keras was chosen due to it’s ease of use and syntactic simplicity, facilitating fast development.
+	### Project Overview 
 
-We are going to create a simple CNN classifier using Keras and measure it’s performance against using a random selection of dog breeds. The objective here is to create a classifier that beats the performance of using a naïve approach, being the selection of dog breed in a random fashion. The classifier will be designed bearing in mind the training times, and hence we will avoid having a classifier with more than 5 convolutional layers, and we will be judicious with the use of normalisation techniques as they can easily double or triple training times.
+This project aims to create a core algorithm to classify dog images according to their breed, that could be used as part of mobile or web app.
 
-Next designing the classifier will be the use of transfer learning through testing popular networks such as VGG16, VGG19 and Xception. By tracking their performance during training and testing, the best performing classifier will be selected and used as the prediction CNN in our dog breed classier algorithm.
+The application should provide a fun user experience as it will accept not only dog images but any user-supplied image as input.
 
-While there are many metrics that one could use to better judge the performance of a CNN, for this project an “accuracy” metric will be used with the object being to create a classifier that achieves over 60% classification accuracy. Accuracy, as a performance metric has been due to it’s simplicity and it is also the metric chosen by Udacity for the initial implementation.
+If a dog is detected, the algorithm should output a prediction of the dog’s breed. If a human is detected, the output should be the most resembling dog breed.
 
-By the end of the project, we anticipate having built a dog breed classification algorithm that makes use of transfer learning to increase accuracy and has the capabilities of predicting the breed of a given dog image with over 60% accuracy. The algorithm will be powerful enough to detect human faces in images and predict what dog breed the face resembles.
+If neither is detected, the algorithm should output an error!
 
-<a id='notebook'></a>
+<a id='statement'></a>
 
-### 3. Project Process
+	### Problem Statement 
+	
+The classifier used is Convolutional Neural Network (CNN), which is known as state-of-the-art of image classification. The following steps are involved:
 
-You will need to download the following:
+	- Preprocess images
 
-1. Download the [dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip).  Unzip the folder and place it in the data folder 
-2. Download the [human dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/lfw.zip).  Unzip the folder and place it in the the data folder
-3. Download the [Xception bottleneck features](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogXceptionData.npz) for the dog dataset.  Place it in the bottleneck_features folder.
+	- Build robust helper functions for human and dog detection
 
-Then we will use a systematic process workflow to make the project manageable, and this approach involved the following steps:
+	- Experiment with building CNN classifiers from scratch
 
-#### Import Dog Dataset:
-In the code cell below, we import a dataset of dog images. We populate a few variables through the use of the load_files function from the scikit-learn library:
+	- Train the classifier using transfer learning
 
-    train_files, valid_files, test_files - numpy arrays containing file paths to images
-    train_targets, valid_targets, test_targets - numpy arrays containing onehot-encoded classification labels
-    dog_names - list of string-valued dog breed names for translating labels
+	- Predict and analyze the results
 
-```python
-from sklearn.datasets import load_files       
-from keras.utils import np_utils
-import numpy as np
-from glob import glob
-import PIL
-from PIL import Image
-from IPython.display import display, Image 
-from warnings import filterwarnings
-filterwarnings("ignore")
+The main library used to build CNN architecture throughout this project is Keras.
 
-# define function to load train, test, and validation datasets
-def load_dataset(path):
-    data = load_files(path)
-    dog_files = np.array(data['filenames'])
-    dog_targets = np_utils.to_categorical(np.array(data['target']), 133)
-    return dog_files, dog_targets
+<a id='metrics'></a>
 
-# load train, test, and validation datasets
-train_files, train_targets = load_dataset('data/dogImages/train')
-valid_files, valid_targets = load_dataset('data/dogImages/valid')
-test_files, test_targets = load_dataset('data/dogImages/test')
+	### Metrics 
 
-# load list of dog names
-dog_names = [item[20:-1] for item in sorted(glob("data/dogImages/train/*/"))]
+While there are many metrics that one could use to better judge the performance of a CNN, for this project an “accuracy” metric will be used with the object being to create a classifier that achieves over 60% classification accuracy.
 
-# print statistics about the dataset
-print('There are %d total dog categories.' % len(dog_names))
-print('There are %s total dog images.\n' % len(np.hstack([train_files, valid_files, test_files])))
-print('There are %d training dog images.' % len(train_files))
-print('There are %d validation dog images.' % len(valid_files))
-print('There are %d test dog images.'% len(test_files))
-```
+Accuracy, as a performance metric has been used because of its simplicity and it is the most relevant evaluation metric used for multi-class classification problems. 
 
-    Using TensorFlow backend.
+The accuracy is defined as number of correct predictions over total number of predictions made.
+
+Accuracy varies according to the network we use for transfer learning. We tested ResNet50, VGG19, Inception and Xception. ResNet50 and Xception prerformed the best (80% and 85% accuracy). Thus we chose to continue with Xception.
+
+<a id='analysis'></a>
+
+## 2. Analysis
+
+<a id='exploration'></a>
+
+	### Data Exploration
+
+The data for this project is provided by the following links:
+
+    The human images dataset can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/lfw.zip)
+    The dog images dataset can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip)
+
+The dog images dataset has a total of 8351 images. This is sorted into Training(6680 images), Test(836 images), Validate(835 images) directories.
+
+Each of these directories have 133 sub-directories corresponding to 133 different breeds of the dogs. Different breeds have different amount of images.
+
+Some breeds have upto 8 different images while some have only 4. So the data is imbalanced.
 
     There are 133 total dog categories.
     There are 8351 total dog images.
@@ -110,188 +100,78 @@ print('There are %d test dog images.'% len(test_files))
     There are 835 validation dog images.
     There are 836 test dog images.
 
-#### Import Human Dataset:
-In the code cell below, we import a dataset of human images, where the file paths are stored in the numpy array human_files.
+The following points were noted:
 
-```python
-import random
-random.seed(8675309)
+- Image size is not homogenous, thus image preprocessing will be compulsory.
 
-# load filenames in shuffled human dataset
-human_files = np.array(glob("data/lfw/*/*"))
-random.shuffle(human_files)
+- There can be more than one dog in an image, hence the learning task of classification model will be more complex.
 
-# print statistics about the dataset
-print('There are %d total human images.' % len(human_files))
-```
+- Image are provided with white background or with colored and diverse background, where various objects can be found.
+
+For human images dataset there is a total of 13233 images stored under 5750 folders. All images are of the size (250 X 250). As in dog dataset, the data is imbalanced with some humans having only one image while some have multiple images.
+
     There are 13233 total human images.
-    
-#### Detect Humans:
 
-OpenCV’s implementation of Haar feature-based cascade classifiers was used detect human faces in images, and this was done by first converting the image into grey-scale, and then passing the grey-scale image as a parameter to the detectMultiScale function. This function executes the classifier stored in face_detector custom function that makes use of the OpenCV CascadeClassifier.
+<a id='visualization'></a>
 
-```python
-import cv2                
-import matplotlib.pyplot as plt                        
-%matplotlib inline                               
+	### Data Visualization
 
-# extract pre-trained face detector
-face_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_alt.xml')
-
-# load color (BGR) image
-img = cv2.imread(human_files[3])
-# convert BGR image to grayscale
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-# find faces in image
-faces = face_cascade.detectMultiScale(gray)
-
-# print number of faces detected in the image
-print('Number of faces detected:', len(faces))
-
-# get bounding box for each detected face
-for (x,y,w,h) in faces:
-    # add bounding box to color image
-    cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-    
-# convert BGR image to RGB for plotting
-cv_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
-# display the image, along with bounding box
-plt.imshow(cv_rgb)
-plt.show()
-```
-
-    Number of faces detected: 1
-
-![Screen5](images/face.png)
-
-Before using any of the face detectors, it is standard procedure to convert the images to grayscale. The detectMultiScale function executes the classifier stored in face_cascade and takes the grayscale image as a parameter.
-
-In the above code, faces is a numpy array of detected faces, where each row corresponds to a detected face. Each detected face is a 1D array with four entries that specifies the bounding box of the detected face. The first two entries in the array (x and y) specify the horizontal and vertical positions of the top left corner of the bounding box. The last two entries in the array (w and h) specify the width and height of the box.
-
-**Write a Human Face Detector**:
-We can use this procedure to write a function that returns True if a human face is detected in an image and False otherwise. This function, aptly named face_detector, takes a string-valued file path to an image as input and appears in the code block below.
-
-```python
-# returns "True" if face is detected in image stored at img_path
-def face_detector(img_path):
-    img = cv2.imread(img_path)
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray)
-    return len(faces) > 0
-```    
-
-**Assess the Human Face Detector**:
-- **Question 1**: 
-Use the code cell below to test the performance of the face_detector function.
-What percentage of the first 100 images in human_files have a detected human face? 
-What percentage of the first 100 images in dog_files have a detected human face? 
-Ideally, we would like 100% of human images with a detected face and 0% of dog images with a detected face. You will see that our algorithm falls short of this goal, but still gives acceptable performance. We extract the file paths for the first 100 images from each of the datasets and store them in the numpy arrays human_files_short and dog_files_short.
-
-- **Answer**:
-Percentage of human faces detection as human: 99%
-Percentage of dog faces detection as human: 12%
-
-```python
-human_files_short = human_files[:100]
-dog_files_short = train_files[:100]
-# Do NOT modify the code above this line.
-
-human_detects_counter = 0
-dog_detects_counter = 0
-
-for index in range(len(human_files_short)):   
-    value = face_detector(human_files_short[index])
-    if (value):
-        human_detects_counter += 1
-for index in range(len(dog_files_short)):    
-    value = face_detector(dog_files_short[index])
-    if (value):
-        dog_detects_counter += 1
-    
-print('Percentage of human faces detection as human: {}%'.format(human_detects_counter))
-print('Percentage of dog faces detection as human: {}%'.format(dog_detects_counter))
-```    
-      Percentage of human faces detection as human: 99%
-      Percentage of dog faces detection as human: 12%
-
-- **Question 2**: 
-This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?
-
-- **Answer**:
-I think users have their reasons to expect great results from this face detection algorithm. However, they need to understand that algorithms are not perfect and have their own flaws. Custom algorithms can be implemented to handle this scenario, but it will definitely take much time and effort to produce promising results. The beauty of using OpenCV library is you can get more 90% accuracy with less effort.
-
-#### Detect Dogs:
-A pre-trained ResNet-50 model was used to detect dogs in images. Given an image, this pre-trained ResNet-50 model returns a prediction (derived from the available categories in ImageNet) for the object that is contained in the image. Since our installed Keras module was using TensorFlow as a backend, the image had to be pre-processed because Keras CNNs require a 4D array as input, with shape (number of samples,rows,columns,channels).
-
-```python
-from keras.applications.resnet50 import ResNet50
-from absl import logging
-logging._warn_preinit_stderr = 0
-
-# define ResNet50 model
-ResNet50_model = ResNet50(weights='imagenet')
-```
-
-Finally, to detect dogs, we used the following function:
-
-```python
-### returns "True" if a dog is detected in the image stored at img_path
-def dog_detector(img_path):
-    prediction = ResNet50_predict_labels(img_path)
-    return ((prediction <= 268) & (prediction >= 151))
-```
-
-The function above returns a value between 151 and 268 (inclusive) because the categories corresponding to dogs appear in an uninterrupted sequence and correspond to dictionary keys 151–268, inclusive.
-
-**Assess the Dog Detector**:
-
-**Question 3**: Use the code cell below to test the performance of your dog_detector function.
-
-    What percentage of the images in human_files_short have a detected dog?
-    What percentage of the images in dog_files_short have a detected dog?
-
-**Answer**:
-
-    Percentage of human faces detection as dogs: 1%.
-    Percentage of dog faces detection as dogs: 100%
-
-
-Having defined and tested functions for detecting humans and dogs in images, the next step is to create a CNN that classifies dog breeds. The goal is to create a CNN architecture that achieves at least 1% accuracy from scratch without the use of transfer learning.
-
-#### Create a CNN to Classify Dog Breeds (from Scratch)
-
-Now that we have functions for detecting humans and dogs in images, we need a way to predict breed from images.  In this step, you will create a CNN that classifies dog breeds.  You must create your CNN _from scratch_ (so, you can't use transfer learning _yet_!), and you must attain a test accuracy of at least 1%.  In Step 5 of this notebook, you will have the opportunity to use transfer learning to create a CNN that attains greatly improved accuracy.
-
-Be careful with adding too many trainable layers!  More parameters means longer training, which means you are more likely to need a GPU to accelerate the training process.  Thankfully, Keras provides a handy estimate of the time that each epoch is likely to take; you can extrapolate this estimate to figure out how long it will take for your algorithm to train.
-
-We mention that the task of assigning breed to dogs from images is considered exceptionally challenging.  To see why, consider that *even a human* would have great difficulty in distinguishing between a Brittany and a Welsh Springer Spaniel.  
+The task of assigning breed to dogs from images is considered exceptionally challenging. To see why, consider that even a human would have great difficulty in distinguishing between a Brittany and a Welsh Springer Spaniel.
 
 Brittany | Welsh Springer Spaniel
-- | -
+
 <img src="images/Brittany_02625.jpg" width="100"> | <img src="images/Welsh_springer_spaniel_08203.jpg" width="200">
 
-It is not difficult to find other dog breed pairs with minimal inter-class variation (for instance, Curly-Coated Retrievers and American Water Spaniels).  
+It was not difficult to find other dog breed pairs with only few inter-class variations (for instance, Curly-Coated Retrievers and American Water Spaniels).
 
 Curly-Coated Retriever | American Water Spaniel
-- | -
+
 <img src="images/Curly-coated_retriever_03896.jpg" width="200"> | <img src="images/American_water_spaniel_00648.jpg" width="200">
 
-
-Likewise, recall that labradors come in yellow, chocolate, and black.  Your vision-based algorithm will have to conquer this high intra-class variation to determine how to classify all of these different shades as the same breed.  
+Likewise, labradors come in yellow, chocolate, and black. A vision-based algorithm will have to conquer this high intra-class variation to determine how to classify all of these different shades as the same breed.
 
 Yellow Labrador | Chocolate Labrador | Black Labrador
-- | -
+
 <img src="images/Labrador_retriever_06457.jpg" width="150"> | <img src="images/Labrador_retriever_06455.jpg" width="240"> | <img src="images/Labrador_retriever_06449.jpg" width="220">
 
-We also mention that random chance presents an exceptionally low bar: setting aside the fact that the classes are slightly imabalanced, a random guess will provide a correct answer roughly 1 in 133 times, which corresponds to an accuracy of less than 1%.  
+<a id='methodology'></a>
 
-Remember that the practice is far ahead of the theory in deep learning.  Experiment with many different architectures, and trust your intuition.  And, of course, have fun!
+## 3. Methodology
 
-#### Pre-process the Data
+<a id='preprocessing'></a>
 
-We rescale the images by dividing every pixel in every image by 255.
+	### Data Preprocessing
+
+When using TensorFlow as backend, Keras CNNs require a 4D array as input, with shape (**nb_samples, rows, columns, channels**)
+
+where nb_samples corresponds to the total number of images, and rows, columns, and channels correspond to the number of rows, columns, and channels for each image, respectively.
+
+The **path_to_tensor** function below takes a string-valued file path to a color image as input and returns a 4D tensor suitable for supplying to a Keras CNN.
+
+```python
+from keras.preprocessing import image                  
+from tqdm import tqdm
+
+def path_to_tensor(img_path):
+    # loads RGB image as PIL.Image.Image type
+    img = image.load_img(img_path, target_size=(224, 224))
+    # convert PIL.Image.Image type to 3D tensor with shape (224, 224, 3)
+    x = image.img_to_array(img)
+    # convert 3D tensor to 4D tensor with shape (1, 224, 224, 3) and return 4D tensor
+    return np.expand_dims(x, axis=0)
+
+def paths_to_tensor(img_paths):
+    list_of_tensors = [path_to_tensor(img_path) for img_path in tqdm(img_paths)]
+    return np.vstack(list_of_tensors)
+```
+
+First, it loads the image and resizes it to a square image. Next, the image is converted to an array, which is then resized to a 4D tensor.
+
+In order to use the tensor in the pre-trained models in Keras, the RGB image has to be converted to BGR which is a re-ordering of the channels. 
+
+Also, the mean pixel must be subtracted from every pixel in each image. 
+
+This is implemented in the imported function **preprocess_input**. We rescale the images by dividing every pixel in every image by 255.
 
 ```python
 from PIL import ImageFile                            
@@ -303,91 +183,63 @@ valid_tensors = paths_to_tensor(valid_files).astype('float32')/255
 test_tensors = paths_to_tensor(test_files).astype('float32')/255
 ```
 
-      100%|██████████| 6680/6680 [00:47<00:00, 141.80it/s]
-      100%|██████████| 835/835 [00:05<00:00, 154.25it/s]
-      100%|██████████| 836/836 [00:05<00:00, 156.05it/s]
+<a id='implementation'></a>
 
+	### Implementation
 
-#### Model Architecture
+The implementation process can be split into two main steps:
 
-Create a CNN to classify dog breed.  At the end of your code cell block, summarize the layers of your model by executing the line:
+- Build CNN models from scratch
 
-        model.summary()
+- Use transfer learning to have better performance
 
-We have imported some Python modules to get you started, but feel free to import as many modules as you need.  If you end up getting stuck, here's a hint that specifies a model that trains relatively fast on CPU and attains >1% test accuracy in 5 epochs:
+The first trial in building this model is building a CNN from scratch, without the use of transfer learning. 
 
-![Sample CNN](images/sample_cnn.png)
+Based on what we know about the purpose of transfer learning, it is likely that our results will be poor. A random chance is 1 out 133, so anything above 1% is better than random.
 
-**Question 4**: Outline the steps you took to get to your final CNN architecture and your reasoning at each step. If you chose to use the hinted architecture above, describe why you think that CNN architecture should work well for the image classification task.
+For basic CNN, I chose the following architecture:
 
-**Answer**: I have defined three filters layer with structure as 16, 32, 64 and with max-pooling layer to reduce the dimensionality from the data. I have used two dropouts and dense layers to optimize CNN and reduce the changes to overfitting. However, I think more work is needed to achieve the best performance. For this, argumented the dataset to add more training data.
-
-```python
-from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
-from keras.layers import Dropout, Flatten, Dense
-from keras.models import Sequential
-
-# create the architecture using Sequential()
-model = Sequential()
-
-# convolution layer has 16 filters of size 2
-model.add(Conv2D(filters=16, kernel_size=2, padding='same', activation='relu', input_shape=(224, 224, 3)))
-# pooling layer with a 2 x 2 pixel filter 
-model.add(MaxPooling2D(pool_size=2))
-
-# convolution layer has 32 filters of size 2
-model.add(Conv2D(filters=32, kernel_size=2, padding='same', activation='relu'))
-# pooling layer with a 2 x 2 pixel filter 
-model.add(MaxPooling2D(pool_size=2))
-
-# convolution layer has 64 filters of size 2
-model.add(Conv2D(filters=64, kernel_size=2, padding='same', activation='relu'))
-# pooling layer with a 2 x 2 pixel filter 
-model.add(MaxPooling2D(pool_size=2))
-
-model.add(Dropout(0.5))
-model.add(Flatten())
-model.add(Dense(500, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(133, activation='softmax'))
-
-model.summary()
-```
-
-```python
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-conv2d_1 (Conv2D)            (None, 224, 224, 16)      208       
+conv2d_31 (Conv2D)           (None, 224, 224, 16)      208       
 _________________________________________________________________
-max_pooling2d_2 (MaxPooling2 (None, 112, 112, 16)      0         
+max_pooling2d_10 (MaxPooling (None, 112, 112, 16)      0         
 _________________________________________________________________
-conv2d_2 (Conv2D)            (None, 112, 112, 32)      2080      
+conv2d_32 (Conv2D)           (None, 112, 112, 32)      2080      
 _________________________________________________________________
-max_pooling2d_3 (MaxPooling2 (None, 56, 56, 32)        0         
+max_pooling2d_11 (MaxPooling (None, 56, 56, 32)        0         
 _________________________________________________________________
-conv2d_3 (Conv2D)            (None, 56, 56, 64)        8256      
+conv2d_33 (Conv2D)           (None, 56, 56, 64)        8256      
 _________________________________________________________________
-max_pooling2d_4 (MaxPooling2 (None, 28, 28, 64)        0         
+max_pooling2d_12 (MaxPooling (None, 28, 28, 64)        0         
 _________________________________________________________________
-dropout_1 (Dropout)          (None, 28, 28, 64)        0         
+dropout_5 (Dropout)          (None, 28, 28, 64)        0         
 _________________________________________________________________
-flatten_2 (Flatten)          (None, 50176)             0         
+flatten_6 (Flatten)          (None, 50176)             0         
 _________________________________________________________________
-dense_1 (Dense)              (None, 500)               25088500  
+dense_7 (Dense)              (None, 500)               25088500  
 _________________________________________________________________
-dropout_2 (Dropout)          (None, 500)               0         
+dropout_6 (Dropout)          (None, 500)               0         
 _________________________________________________________________
-dense_2 (Dense)              (None, 133)               66633     
+dense_8 (Dense)              (None, 133)               66633     
 =================================================================
 Total params: 25,165,677
 Trainable params: 25,165,677
 Non-trainable params: 0
 _________________________________________________________________
-```
 
-**Test the Model**:
-Try out your model on the test dataset of dog images.  Ensure that your test accuracy is greater than 1%.
+I used a model with three 2D convolutional layers. First, I choose 16 as the number of channels as this is a reasonable amount that will be increasing by a factor of 2 throughout layers.
+
+Same padding is chosen over valid padding in order to preserve input value at the pixels near image edges.
+
+Relu activation is chosen on 2D convolutional layers due to its reputation on performance in training CNN model.
+
+I utilized max pooling to reduce the dimensionality. Pooling makes the CNN run faster but also reduces overfitting. Pooling is safe in this case since it’s likely that neighboring pixels are similar and downsampling, so you have fewer, will not reduce the classifier's ability to detect the image.
+
+Dense layers are equipped with dropout to prevent overfitting. Final output layer is equipped with a softmax function.
+
+When it came time to run the model, I selected 5 epochs because that is all it took to get to > 1% accuracy.
 
 ```python
 # get index of predicted dog breed for each image in test set
@@ -396,90 +248,19 @@ dog_breed_predictions = [np.argmax(model.predict(np.expand_dims(tensor, axis=0))
 # report test accuracy
 test_accuracy = 100*np.sum(np.array(dog_breed_predictions)==np.argmax(test_targets, axis=1))/len(dog_breed_predictions)
 print('Test accuracy: %.4f%%' % test_accuracy)
+
+Test accuracy: 8.2536%
 ```
 
-      Test accuracy:  8.2536%
+<a id='refinement'></a>
 
-#### Use a CNN to Classify Dog Breeds:
+	### Refinement
 
-To reduce training time without sacrificing accuracy, we show you how to train a CNN using transfer learning.  In the following step, you will get a chance to use transfer learning to train your own CNN.
+Building CNN from scratch was not great. Its accuracy was about 8.25%. This is better than random, but there’s a lot of room to improve. First, the VGG16 model was utilized. The best it could do was 41.14% accuracy.
 
-**Obtain Bottleneck Features**
-
-```python
-bottleneck_features = np.load('bottleneck_features/DogVGG16Data.npz')
-train_VGG16 = bottleneck_features['train']
-valid_VGG16 = bottleneck_features['valid']
-test_VGG16 = bottleneck_features['test']
-```
-
-**Model Architecture**:
-
-The model uses the the pre-trained VGG-16 model as a fixed feature extractor, where the last convolutional output of VGG-16 is fed as input to our model.  We only add a global average pooling layer and a fully connected layer, where the latter contains one node for each dog category and is equipped with a softmax.
+So, I utilized different pre-trained models, and found that the best is Xception model that gave the best accuracy value equals to 85.29%. The details of the experiments performed and the final Network chosen are given below:
 
 ```python
-VGG16_model = Sequential()
-VGG16_model.add(GlobalAveragePooling2D(input_shape=train_VGG16.shape[1:]))
-VGG16_model.add(Dense(133, activation='softmax'))
-
-VGG16_model.summary()
-```
-    _________________________________________________________________
-    Layer (type)                 Output Shape              Param #   
-    =================================================================
-    global_average_pooling2d_2 ( (None, 512)               0         
-    _________________________________________________________________
-    dense_2 (Dense)              (None, 133)               68229     
-    =================================================================
-    Total params: 68,229
-    Trainable params: 68,229
-    Non-trainable params: 0
-    _________________________________________________________________
-
-**Test the Model**:
-Now, we can use the CNN to test how well it identifies breed within our test dataset of dog images.  We print the test accuracy below.
-
-```python
-# get index of predicted dog breed for each image in test set
-VGG16_predictions = [np.argmax(VGG16_model.predict(np.expand_dims(feature, axis=0))) for feature in test_VGG16]
-
-# report test accuracy
-test_accuracy = 100*np.sum(np.array(VGG16_predictions)==np.argmax(test_targets, axis=1))/len(VGG16_predictions)
-print('Test accuracy: %.4f%%' % test_accuracy)
-```
-      Test accuracy: 41.1483%      
-
-#### Create a CNN to Classify Dog Breeds (using Transfer Learning)
-
-You will now use transfer learning to create a CNN that can identify dog breed from images.  Your CNN must attain at least 60% accuracy on the test set.
-
-In Step 4, we used transfer learning to create a CNN using VGG-16 bottleneck features.  In this section, you must use the bottleneck features from a different pre-trained model.  To make things easier for you, we have pre-computed the features for all of the networks that are currently available in Keras:
-- [VGG-19](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogVGG19Data.npz) bottleneck features
-- [ResNet-50](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogResnet50Data.npz) bottleneck features
-- [Inception](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogInceptionV3Data.npz) bottleneck features
-- [Xception](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogXceptionData.npz) bottleneck features
-
-The files are encoded as such:
-
-    Dog{network}Data.npz
-
-where `{network}`, in the above filename, can be one of `VGG19`, `Resnet50`, `InceptionV3`, or `Xception`.  Pick one of the above architectures, download the corresponding bottleneck features, and store the downloaded file in the `bottleneck_features/` folder in the repository.
-
-**Obtain Bottleneck Features**:
-
-In the code block below, extract the bottleneck features corresponding to the train, test, and validation sets by running the following:
-
-    bottleneck_features = np.load('bottleneck_features/Dog{network}Data.npz')
-    train_{network} = bottleneck_features['train']
-    valid_{network} = bottleneck_features['valid']
-    test_{network} = bottleneck_features['test']
-
-
-```python
-### TODO: Obtain bottleneck features from another pre-trained CNN.
-# Compare all four witht same network and see which one is better
-# Choose 1 of the following four 'ResNet-50', 'Inception', 'Xception', 'VGG-19'
-
 network = 'Xception'
 
 if network =='ResNet-50':
@@ -490,29 +271,11 @@ elif network =='Xception':
     bottleneck_features_network = np.load('bottleneck_features/DogXceptionData.npz')
 elif network =='VGG-19':
     bottleneck_features_network = np.load('bottleneck_features/DogVGG19Data.npz')
-
+    
 train_network = bottleneck_features_network['train']
 valid_network = bottleneck_features_network['valid']
 test_network = bottleneck_features_network['test']
-
-print("Shape of train_resnet: {}".format(train_network.shape))
-print("Shape of valid_resnet: {}".format(valid_network.shape))
-print("Shape of test_resnet: {}".format(test_network.shape))
 ```
-    Shape of train_resnet: (6680, 7, 7, 2048)
-    Shape of valid_resnet: (835, 7, 7, 2048)
-    Shape of test_resnet: (836, 7, 7, 2048)
-
-
-**Model Architecture**:
-
-Create a CNN to classify dog breed.  At the end of your code cell block, summarize the layers of your model by executing the line:
-
-        <your model's name>.summary()
-
-**Question 5**: Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.
-
-**Answer**: I have trained with all models of three bottleneck features and found that the best is Xception model that gave the best accuracy value equals to 85.29%. I believe that the defined architecture is well suited for the problem as the Xception Bottleneck features are already designed for image classification. The details of the experiments performed and the final Network chosen are given below:
 
 |Model      | Train Acc (%)| Val Acc (%) | Test Acc (%) |
 |-----------|--------------|-------------|--------------|
@@ -521,114 +284,102 @@ Create a CNN to classify dog breed.  At the end of your code cell block, summari
 |Inception  |  98.89       | 85.99       | 80.26        |
 |Xception   |  98.38       | 85.39       | 85.29        |
 
-As you can see from the results above, all networks except for the VGG-19 have a test accuracy of higher than 60% with the Xcpetion network performing the best at 85%. More importantly though, there is a large difference between training and test accuracy for all the networks.The most important parameters in this case would be the different accuracies. All the models have been trained for 20 epochs.
+As you can see from the results above, all networks except for the VGG-19 have a test accuracy of higher than 60% with the Xcpetion network performing the best at 85%.
+
+More importantly though, there is a large difference between training and test accuracy for all the networks.The most important parameters in this case would be the different accuracy.
 
 This can be attributed to either:
 
-    The size of the dataset is not large enough
-    The avoidable bias is very large because the network is not deep enough
-    
+	- The size of the dataset is not large enough
+	- The avoidable bias is very large because the network is not deep enough
+
+The best architecture based on transfer learning from an Xception is what is used for the algorithm further below.
+
+<a id='results'></a>
+
+## 4. Results
+
+<a id='evaluation'></a>
+
+	### Model Evaluation and Validation
+
+Each model is trained during 20 epochs. A validation set is used to evaluate the model and checks whether validation loss decreases. If this is the case, the model weights are saved with a checkpointer and will be loaded later for testing.
+
+The model built from scratch reported **8.2536%** of accuracy. From this benchmarking, we can conclude that more convolutional layers and more fully-connected layers help to improve model accuracy.
+
+Transfer learning using VGG-16 network reported **41.14%** of accuracy on test set. This result is in concordance with the above analysis, since VGG-16 has upto 16 layers and was especially pre-trained on over 10 million images.
+
+The final model which is a pre-trained Xception model achieved a good accuracy **85.29%**. It is then used to build the final algorithm.
+
+To verify the robustness of this algorithm, several checks were performed with input images.
+
+As of human images, the results is quite convincing, however, this is the fun part of the application and no accuracy metrics are applied.
+
+<a id='justification'></a>
+
+	### Justification
+
+The final model achieves a classification accuracy of **85.29%** on the test set, much higher than the benchmark. Transfer learning based on Xception is better than VGG-16.
+
+|Model                 | Accuracy (%) |
+|----------------------|--------------|
+|CNN from Scratch      |  8.25        |
+|Transfer from VGG-16  |  41.14       |
+|Xception              |  85.29       |
+
 **Why does the Xception Network do the best?**
 
 The VGG-19 network consists of 19 traditional simple convolutional layers which are trained to learn image features. Hence, the result of training using this network results in a fairly good accuracy of around ~40%.
 
 The ResNet, Inception and Xception architectures, however, use architectures (skip layers in the case of ResNet and Inception modules in the case of Inception and Xception) to enable training much deeper networks without over-fitting.
 
-The Xception Network in particular uses an extreme Inception module architecure, which consists of 1x1 convolution filters, followed by multiple 3x3 or 5x5 filters, thus decoupling the mapping of cross-channels correlations and spatial correlations in the feature maps of convolutional neural networks [1]
+The Xception Network in particular uses an extreme Inception module architectures, which consists of 1x1 convolution filters, followed by multiple 3x3 or 5x5 filters, thus decoupling the mapping of cross-channels correlations and spatial correlations in the feature maps of convolutional neural networks [1]
 
-References[1]: [*Xception: Deep Learning with Depthwise Separable Convolutions*](http://openaccess.thecvf.com/content_cvpr_2017/papers/Chollet_Xception_Deep_Learning_CVPR_2017_paper.pdf)    
+*References*[1]: [*Xception: Deep Learning with Depthwise Separable Convolutions*](http://openaccess.thecvf.com/content_cvpr_2017/papers/Chollet_Xception_Deep_Learning_CVPR_2017_paper.pdf)
 
-The best architecture based on transfer learning from an Xception is what is used for the algorithm further below.
+<a id='conclusion'></a>
 
-**The main prediction function:**
+## 5. Conclusion
 
-```python
-### TODO: Write a function that takes a path to an image as input
-### and returns the dog breed that is predicted by the model.
-def predict_breed(img_path):
-    
-    # extract bottleneck features
-    bottleneck_feature = extract_Xception(path_to_tensor(img_path))
-    
-    # obtain predicted vector
-    pred_vector = network_model.predict(bottleneck_feature)
-    
-    # return predicted dog breed
-    return dog_names[np.argmax(pred_vector)]
-```
+<a id='reflection'></a>
 
-#### Write your Algorithm:
+	### Reflection
 
-Write an algorithm that accepts a file path to an image and first determines whether the image contains a human, dog, or neither.  Then,
-- if a __dog__ is detected in the image, return the predicted breed.
-- if a __human__ is detected in the image, return the resembling dog breed.
-- if __neither__ is detected in the image, provide output that indicates an error.
+To summarize, this project has been passing the following steps:
 
-Some sample output for our algorithm is provided below:
+	- Problem overview and statement
 
-![Sample Human Output](images/sample_human_2.png)
+	- Import dataset, explore data and pre-process input images
 
-The main algorithm for the project is in the code below, the algorithm uses the Xception pre-trained model to make predictions of dog breeds.
+	- Build helper functions for the final algorithm
 
-```python
-### TODO: Write your algorithm.
-### Feel free to use as many code cells as needed.
-def execute_app(img_path):
-    display(Image(img_path, width=200, height=200))
-    
-    if dog_detector(img_path) == 1:
-        print("Predicted as a dog, and breed is: ")
-        return predict_breed(img_path).partition('.')[-1]
-    
-    elif face_detector(img_path) == 1:
-        print("Predicted as a human, and resemble to: ")
-        return predict_breed(img_path).partition('.')[-1]
-    
-    else:
-        return print("Neither humans nor dogs are in the image. Please try again.")
-```    
+	- Build different CNN architectures and benchmark the classifiers
 
-#### Test your Algorithm:
+	- Choose final model and integrate it to final algorithm
 
-In this section, you will take your new algorithm for a spin! What kind of dog does the algorithm think that you look like? If you have a dog, does it predict your dog's breed accurately? If you have a cat, does it mistakenly think that your cat is a dog?
+	- Evaluate and verify the algorithm robustness
 
-**Test Your Algorithm on Sample Images**
-Test your algorithm at least six images on your computer. Feel free to use any images you like. Use at least two human and two dog images. 
+The most challenging and interesting part was building models from scratch. There is no better way to understand in deep CNNs than building and experiment with my own models.
 
-**Question 6**: Is the output better than you expected :) ? Or worse :( ? Provide at least three possible points of improvement for your algorithm.
-**Answer**: The output is better than I expected. It managed to identify dog pictures as dogs and pictures of humans as humans. Overall, the result is promising compared to data size. The biggest improvement probably to have more training data with more augmentation so that model can be more generalized. 
+Finally the results were much better than I expected.
 
-*Points of improvements for the algorithm:*
-- More variety of breeds is required to enhance the model prediction for humans
-- Improve the model to be able to classify pictures with noise
-- Increasing number of epoch might help as well
-- More images as per classes of dog, will help to improve model's accuracy
+<a id='improvement'></a>
 
-```python
-## TODO: Execute your algorithm from Step 6 on
-## at least 6 images on your computer.
-## Feel free to use as many code cells as needed.
+	### Improvement
 
-print(execute_app("images/1.jpg"))
-print(execute_app("images/2.jpg"))
-print(execute_app("images/3.jpg"))
-print(execute_app("images/4.jpg"))
-print(execute_app("images/5.jpg"))
-print(execute_app("images/6.jpg"))
-print(execute_app("images/7.jpg"))
-print(execute_app("images/8.jpg"))
-```
+To improve the model performance, several pathways are worth considering:
 
-![pic1](images/pic1.png)
+	- More variety of breeds is required to enhance the model prediction for humans
 
-![pic2](images/pic2.png)
+	- Improve the model to be able to classify pictures with noise
 
-![pic3](images/pic3.png)
+	- Increasing number of epoch might help as well
 
+	- More images as per classes of dog, will help to improve model's accuracy
 
-<a id='run'></a>
+<a id='app'></a>
 
-## 4. Web App
+## 6. Web Application
 
 Now it's time to see the prediction in a user friendly way.
 
@@ -639,6 +390,10 @@ python app.py
 ```
 
 This will start the web app and will direct you to a URL where you can upload images and get classification results for it.
+
+**_Screenshot 2_**
+
+![Screen](images/Screenshot_4.png)
 
 **_Screenshot 2_**
 
@@ -662,7 +417,7 @@ This will start the web app and will direct you to a URL where you can upload im
 
 <a id='files'></a>
 
-## 5. Files
+## 7. Files
 
 <pre>
 .
@@ -684,16 +439,9 @@ This will start the web app and will direct you to a URL where you can upload im
 └── requirements.txt---------------------------# REQUIREMENTS FOR APP
 </pre>
 
-<a id='conclusion'></a>
-
-## 6. Conclusion 
-In this project, different deep learning machine vision algorithms are showcased. Face Detection Haar Cascade Classifier with OpenCV, a dog detection algorithm with a ImageNet pretrained ResNet50 and two dog breed classifiers, one built from scratch and one use transfer learning. Each algorithm give good accuracy, and the final combined algorithm give an accuracy of around 85%. 
-
-I was surprised by the good results of the algorithm i.e. Xception. Without doing too much fine-tuning, the algorithm was already providing high accuracy and the predictions were mostly correct. An accuracy of over 85%. For human faces it seems easier if the face has distinct features that resembles a certain dog breed. Otherwise, it starts to guess from some features, but the results vary. For higher accuracy, the parameters could be further optimized, maybe also including more layers into the model. Further, number of epochs could be increased to 40 to lower the loss. Also by providing an even bigger training data set, the classification accuracy could be improved further. Also, possible ways of improving the network performance for future works is to reduce both overfitting and class imbalance.
-
 <a id='sw'></a>
 
-## 7. Software Requirements
+## 8. Software Requirements
 
 This project uses **Python 3.7** and the necessary libraries are mentioned in _requirements.txt_.
 
@@ -703,7 +451,7 @@ pip3 install -r requirements.txt
 
 <a id='credits'></a>
 
-## 8. Credits and Acknowledgements <a name='licensing'></a>
+## 9. Credits and Acknowledgements <a name='licensing'></a>
 
 Must give credit to [Udacity](https://www.udacity.com/courses/all) for creating this beautiful learning experience.  
 This project is licensed under the [MIT License](https://github.com/jeferson-sb/dogAI/blob/master/LICENSE).
