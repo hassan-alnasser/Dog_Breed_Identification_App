@@ -85,6 +85,7 @@ Accuracy varies according to the network we use for transfer learning. We tested
 The data for this project is provided by the following links:
 
 The human images dataset can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/lfw.zip)
+
 The dog images dataset can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip)
 
 The dog images dataset has a total of 8351 images. This is sorted into Training(6680 images), Test(836 images), Validate(835 images) directories.
