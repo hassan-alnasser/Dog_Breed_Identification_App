@@ -4,35 +4,27 @@
    
 ## Table of Contents
 
-[Project Definition](#definition)
-[Project Overview](#overview)	
-[Problem Statement](#statement)	
-[Metrics](#metrics)	
-
-[Analysis](#analysis)
+1. [Project Definition](#definition)
+- [Project Overview](#overview)	
+- [Problem Statement](#statement)	
+- [Metrics](#metrics)	
+2. [Analysis](#analysis)
 [Data Exploration](#exploration)
 [Data Visualization](#visualization)
-
-[Methodology](#methodology)
+3. [Methodology](#methodology)
 [Data Preprocessing](#preprocessing)
 [Implementation](#implementation)
 [Refinement](#refinement)
-
-[Results](#results)
+4. [Results](#results)
 [Model Evaluation and Validation](#evaluation)
 [Justification](#justification)
-
-[Conclusion](#conclusion)
+5. [Conclusion](#conclusion)
 [Reflection](#reflection)
 [Improvement](#improvement)
-
-[Web Application](#app)
-
-[Files](#files)
-
-[Software Requirements](#sw)
-
-[Credits and Acknowledgments](#credits)
+6. [Web Application](#app)
+7. [Files](#files)
+8. [Software Requirements](#sw)
+9. [Credits and Acknowledgments](#credits)
 
 ***
 
