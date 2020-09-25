@@ -5,7 +5,7 @@
 ## Table of Contents
 
 1. [Project Definition](#definition)
-- [Project Overview](#overview)	
+	* [Project Overview](#overview)	
 - [Problem Statement](#statement)	
 - [Metrics](#metrics)	
 2. [Analysis](#analysis)
