@@ -86,7 +86,7 @@ The data for this project is provided by the following links:
 
 The human images dataset can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/lfw.zip), The dog images dataset can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip)
 
-The dog images dataset has a total of 8351 images. This is sorted into Training(6680 images), Test(836 images), Validate(835 images) directories.
+The dog images dataset has a total of 8351 images. This is sorted into Training (6680 images), Test (836 images), Validate (835 images) directories.
 
 Each of these directories have 133 sub-directories corresponding to 133 different breeds of the dogs. Different breeds have different amount of images.
 
